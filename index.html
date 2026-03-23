@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Xier Lin — Engineering Portfolio</title>
+<style>
+:root{
+  --bg:#f9f8f6;
+  --white:#ffffff;
+  --text:#1a1a1a;
+  --muted:#6b7280;
+  --light:#e8e4de;
+  --accent:#c0410a;
+  --accent-soft:#fde8dd;
+  --border:#e2ddd7;
+  --radius:4px;
+  --font:'Georgia',serif;
+  --sans:'Helvetica Neue',Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:58px}
+.logo-mark{width:36px;height:36px;border-radius:50%;background:var(--text);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.8rem;font-weight:700;letter-spacing:-.5px;flex-shrink:0}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;letter-spacing:.5px;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+
+/* HERO */
+#hero{padding:100px 60px 80px;max-width:900px}
+.hero-eyebrow{font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--muted)}
+h1{font-family:var(--font);font-size:clamp(3rem,7vw,5.6rem);font-weight:400;line-height:1.05;letter-spacing:-1px;margin-bottom:28px}
+h1 em{font-style:italic;color:var(--accent)}
+.hero-desc{font-size:1.1rem;color:var(--muted);max-width:520px;line-height:1.8;margin-bottom:40px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:11px 26px;font-size:.85rem;font-weight:600;border-radius:2px;text-decoration:none;letter-spacing:.5px;transition:all .2s;cursor:pointer;border:none;display:inline-block}
+.btn-dark{background:var(--text);color:#fff}
+.btn-dark:hover{background:#333}
+.btn-outline{background:transparent;color:var(--text);border:1.5px solid var(--text)}
+.btn-outline:hover{background:var(--text);color:#fff}
+
+/* SUMMARY STRIP */
+.summary-strip{display:flex;gap:0;border-bottom:1px solid var(--border)}
+.sw-col{flex:1;padding:48px 60px;border-right:1px solid var(--border)}
+.sw-col:last-child{border-right:none}
+.sw-col h3{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.sw-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.sw-col li{font-size:.95rem;color:var(--text);padding-left:16px;position:relative;line-height:1.5}
+.sw-col li::before{content:'—';position:absolute;left:0;color:var(--accent)}
+
+/* EXPERIENCE */
+#experience{padding:80px 60px}
+.section-eyebrow{font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:48px;display:flex;align-items:center;gap:14px}
+.section-eyebrow::after{content:'';flex:1;height:1px;background:var(--border)}
+.exp-list{display:flex;flex-direction:column}
+.exp-item{display:grid;grid-template-columns:160px 1fr;gap:40px;padding:32px 0;border-bottom:1px solid var(--border);align-items:start;opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
+.exp-item.visible{opacity:1;transform:none}
+.exp-meta{padding-top:4px}
+.exp-date{font-size:.78rem;color:var(--muted);letter-spacing:.3px;margin-bottom:4px}
+.exp-loc{font-size:.78rem;color:var(--muted)}
+.exp-body h4{font-size:1.05rem;font-weight:700;margin-bottom:6px}
+.exp-body .company{font-size:.85rem;color:var(--accent);font-weight:600;margin-bottom:10px;letter-spacing:.3px}
+.exp-body p{font-size:.92rem;color:var(--muted);line-height:1.75;max-width:540px}
+
+/* PROJECTS */
+#projects{padding:80px 60px}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:0}
+.proj-item{background:var(--white);overflow:hidden;cursor:pointer;position:relative;opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}
+.proj-item.visible{opacity:1;transform:none}
+.proj-thumb{width:100%;aspect-ratio:4/3;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:3rem;overflow:hidden;transition:transform .5s}
+.proj-item:hover .proj-thumb{transform:scale(1.04)}
+.proj-info{padding:20px 22px 24px}
+.proj-cat{font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.proj-info h3{font-size:1rem;font-weight:700;margin-bottom:6px}
+.proj-info p{font-size:.83rem;color:var(--muted);line-height:1.65}
+.proj-item::after{content:'↗';position:absolute;top:16px;right:16px;width:30px;height:30px;background:var(--text);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;opacity:0;transform:scale(.7);transition:opacity .2s,transform .2s}
+.proj-item:hover::after{opacity:1;transform:scale(1)}
+
+/* ABOUT */
+#about{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border)}
+.about-left{padding:80px 60px;border-right:1px solid var(--border)}
+.about-right{padding:80px 60px;background:var(--white)}
+.about-right h2{font-family:var(--font);font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.2;margin-bottom:28px}
+.about-right h2 em{font-style:italic;color:var(--accent)}
+.about-right p{font-size:.95rem;color:var(--muted);line-height:1.85;margin-bottom:18px}
+.interests{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.tag{padding:6px 14px;border:1px solid var(--border);border-radius:2px;font-size:.78rem;color:var(--muted);letter-spacing:.3px}
+.about-avatar-box{width:100%;aspect-ratio:1;background:linear-gradient(145deg,var(--light) 0%,#ddd8d0 100%);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-size:6rem;margin-bottom:28px}
+.about-stat{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--border)}
+.about-stat:first-of-type{border-top:1px solid var(--border)}
+.stat-label{font-size:.78rem;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.stat-val{font-family:var(--font);font-size:1.6rem;font-weight:400;color:var(--text)}
+
+/* CONTACT */
+#contact{padding:100px 60px;text-align:center;background:var(--text);color:#fff}
+#contact h2{font-family:var(--font);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:400;margin-bottom:20px;line-height:1.1}
+#contact h2 em{font-style:italic;color:#f97316}
+#contact p{color:rgba(255,255,255,.55);margin-bottom:44px;font-size:1rem;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.8}
+.contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.c-btn{padding:12px 28px;font-size:.85rem;font-weight:600;letter-spacing:.5px;border-radius:2px;text-decoration:none;transition:all .2s}
+.c-btn-white{background:#fff;color:var(--text)}
+.c-btn-white:hover{background:#e5e5e5}
+.c-btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3)}
+.c-btn-ghost:hover{border-color:#fff}
+
+/* FOOTER */
+footer{background:var(--text);border-top:1px solid rgba(255,255,255,.1);padding:24px 60px;display:flex;justify-content:space-between;align-items:center}
+footer span{font-size:.78rem;color:rgba(255,255,255,.35);letter-spacing:.5px}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(26,26,26,.85);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s;padding:24px}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--white);max-width:640px;width:100%;max-height:86vh;overflow-y:auto;transform:translateY(16px);transition:transform .25s;padding:0}
+.modal-overlay.open .modal{transform:none}
+.modal-header{padding:36px 40px 24px;border-bottom:1px solid var(--border);position:relative}
+.modal-header .cat{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.modal-header h3{font-family:var(--font);font-size:1.8rem;font-weight:400}
+.modal-close{position:absolute;top:28px;right:32px;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--muted);line-height:1;padding:4px}
+.modal-body{padding:28px 40px 40px}
+.modal-body p{font-size:.95rem;color:var(--muted);line-height:1.85;margin-bottom:14px}
+.modal-versions{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+.v-row{display:flex;align-items:center;gap:16px;padding:12px 16px;background:var(--bg);border-left:3px solid var(--accent)}
+.v-row .vn{font-size:.78rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--accent);min-width:60px}
+.v-row .vd{font-size:.88rem;color:var(--text)}
+
+/* SCROLL ANIM */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:900px){
+  nav{padding:0 24px}
+  #hero,#experience,#projects,#about .about-left,#about .about-right,#contact{padding-left:24px;padding-right:24px}
+  .sw-col{padding:36px 24px}
+  .exp-item{grid-template-columns:1fr}
+  .proj-grid{grid-template-columns:repeat(2,1fr)}
+  #about{grid-template-columns:1fr}
+  .about-left{border-right:none;border-bottom:1px solid var(--border)}
+  footer{padding:20px 24px;flex-direction:column;gap:8px;text-align:center}
+}
+@media(max-width:560px){
+  .proj-grid{grid-template-columns:1fr}
+  .summary-strip{flex-direction:column}
+  .sw-col{border-right:none;border-bottom:1px solid var(--border)}
+  h1{font-size:2.8rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo-mark">XL</div>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-eyebrow">Engineering Portfolio</div>
+  <h1>Xier<br><em>Lin.</em></h1>
+  <p class="hero-desc">Mechanical Engineering student with an Industrial Engineering minor at Northeastern University. I like to build things that work — and apply them to problems that matter.</p>
+  <div class="hero-ctas">
+    <a href="#projects" class="btn btn-dark">View Projects</a>
+    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+  </div>
+</section>
+
+<!-- SUMMARY STRIP -->
+<div class="summary-strip">
+  <div class="sw-col">
+    <h3>Strengths</h3>
+    <ul>
+      <li>Loves building things that actually work</li>
+      <li>Comfortable failing — and iterating fast</li>
+      <li>Rubik's cube in under a minute</li>
+    </ul>
+  </div>
+  <div class="sw-col">
+    <h3>Weaknesses</h3>
+    <ul>
+      <li>Can't stop taking things apart</li>
+      <li>Probably over-engineers the simple stuff</li>
+      <li>Will always want to do "just one more version"</li>
+    </ul>
+  </div>
+  <div class="sw-col">
+    <h3>Currently</h3>
+    <ul>
+      <li>1st year @ Northeastern University</li>
+      <li>ME major, IE minor</li>
+      <li>Building. Learning. Iterating.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-eyebrow">Experience</div>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">2024 — Present</div>
+        <div class="exp-loc">Boston, MA</div>
+      </div>
+      <div class="exp-body">
+        <div class="company">Northeastern University</div>
+        <h4>B.S. Mechanical Engineering, Minor in Industrial Engineering</h4>
+        <p>Pursuing a degree with a focus on applied design, systems thinking, and hands-on project work. Member of engineering project teams.</p>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">2023 — 2024</div>
+        <div class="exp-loc">High School</div>
+      </div>
+      <div class="exp-body">
+        <div class="company">Science Olympiad</div>
+        <h4>Competitor — Wind Power, Air Trajectory, Fermi Questions</h4>
+        <p>Competed in engineering events requiring hands-on device construction and quantitative estimation. This is where the spark happened.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-eyebrow">Projects</div>
+  <div class="proj-grid">
+
+    <div class="proj-item" onclick="openModal('mechanism')">
+      <div class="proj-thumb">⚙️</div>
+      <div class="proj-info">
+        <div class="proj-cat">SkillBuilder · Mechanism</div>
+        <h3>Mechanism Project</h3>
+        <p>Iterated through 4 versions of a mechanical system — from first prototype to competition-ready final build.</p>
+      </div>
+    </div>
+
+    <div class="proj-item" onclick="openModal('electronic')">
+      <div class="proj-thumb">⚡</div>
+      <div class="proj-info">
+        <div class="proj-cat">SkillBuilder · Electronics</div>
+        <h3>Electronics Project</h3>
+        <p>Hands-on circuits, components, and troubleshooting. Building the electrical foundation every engineer needs.</p>
+      </div>
+    </div>
+
+    <div class="proj-item" onclick="openModal('takeapart')">
+      <div class="proj-thumb">🔩</div>
+      <div class="proj-info">
+        <div class="proj-cat">SkillBuilder · Analysis</div>
+        <h3>Take Apart Project</h3>
+        <p>Disassembled a real device and reverse-engineered the design decisions inside.</p>
+      </div>
+    </div>
+
+    <div class="proj-item" onclick="openModal('led')">
+      <div class="proj-thumb">💡</div>
+      <div class="proj-info">
+        <div class="proj-cat">Electronics</div>
+        <h3>Small LED Project</h3>
+        <p>LED circuit build — soldering, wiring, and hands-on electronics fundamentals from scratch.</p>
+      </div>
+    </div>
+
+    <div class="proj-item" onclick="openModal('rgm')">
+      <div class="proj-thumb">🤖</div>
+      <div class="proj-info">
+        <div class="proj-cat">Capstone</div>
+        <h3>RGM Project</h3>
+        <p>Integrated mechanical and electronic skills into a more advanced, full engineering build.</p>
+      </div>
+    </div>
+
+    <div class="proj-item" onclick="openModal('skillbuilder')">
+      <div class="proj-thumb">🏗️</div>
+      <div class="proj-info">
+        <div class="proj-cat">Overview</div>
+        <h3>What is SkillBuilder?</h3>
+        <p>The program behind all the project work — a structured engineering curriculum for learning by doing.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left">
+    <div class="about-avatar-box">😄</div>
+    <div class="about-stat"><span class="stat-label">University</span><span class="stat-val">Northeastern</span></div>
+    <div class="about-stat"><span class="stat-label">Year</span><span class="stat-val">1st</span></div>
+    <div class="about-stat"><span class="stat-label">Major</span><span class="stat-val">ME + IE</span></div>
+    <div class="about-stat"><span class="stat-label">Hometown</span><span class="stat-val">Philadelphia</span></div>
+  </div>
+  <div class="about-right">
+    <div class="section-eyebrow">About</div>
+    <h2>Hey, I'm<br><em>Xier.</em></h2>
+    <p>Born in Philadelphia, moved around a lot growing up. That taught me to adapt, stay curious, and find community wherever I land. Now I'm in Boston figuring out how to become a real engineer.</p>
+    <p>My educational goal is to get a degree in engineering and gain functional experience to prep me as an engineer. I like to build stuff that works — and I hope to apply what I make to community problems.</p>
+    <p>Outside of engineering, you'll find me running, solving Rubik's cubes, cooking something questionable, or doing cup stacking competitively (yes, it's a thing).</p>
+    <div class="interests">
+      <span class="tag">🏃 Running</span>
+      <span class="tag">🧊 Rubik's Cube</span>
+      <span class="tag">🍳 Cooking</span>
+      <span class="tag">🏆 Cup Stacking</span>
+      <span class="tag">🌿 Outdoor Sports</span>
+      <span class="tag">😴 Napping Professionally</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Let's<br><em>connect.</em></h2>
+  <p>Whether you're a recruiter, fellow engineer, friend, or completely lost stranger — I'd love to hear from you.</p>
+  <div class="contact-links">
+    <a href="https://sites.google.com/view/xierslin-engineeringportfolio/" target="_blank" class="c-btn c-btn-white">View Original Portfolio</a>
+    <a href="mailto:xier@example.com" class="c-btn c-btn-ghost">Email Me</a>
+    <a href="#" class="c-btn c-btn-ghost">LinkedIn</a>
+  </div>
+</section>
+
+<footer>
+  <span>Xier Lin — Engineering Portfolio</span>
+  <span>Northeastern University · Boston, MA</span>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal" id="modalBox">
+    <div class="modal-header">
+      <div class="cat" id="mCat"></div>
+      <h3 id="mTitle"></h3>
+      <button class="modal-close" onclick="closeModal(null,true)">✕</button>
+    </div>
+    <div class="modal-body" id="mBody"></div>
+  </div>
+</div>
+
+<script>
+const modals = {
+  mechanism:{
+    cat:'SkillBuilder · Mechanism',
+    title:'Mechanism Project',
+    body:`<p>This project was all about iteration — designing a mechanical system and pushing it through version after version until it actually worked. Each failure was a lesson.</p>
+    <div class="modal-versions">
+      <div class="v-row"><span class="vn">V0</span><span class="vd">Initial prototype — first proof of concept</span></div>
+      <div class="v-row"><span class="vn">V1</span><span class="vd">Redesign — failed, but revealed key constraints</span></div>
+      <div class="v-row"><span class="vn">V2</span><span class="vd">Second redesign — failed for different reasons</span></div>
+      <div class="v-row"><span class="vn">V3 Draft</span><span class="vd">Incomplete but on the right track</span></div>
+      <div class="v-row"><span class="vn">V3 Final</span><span class="vd">✅ Competition-ready build</span></div>
+    </div>`
+  },
+  electronic:{
+    cat:'SkillBuilder · Electronics',
+    title:'Electronics Project',
+    body:`<p>Hands-on exploration of electronic systems. Built circuits from scratch, worked with real components, and developed the troubleshooting habits that every engineer eventually needs.</p><p>This project is the foundation — understanding current, resistance, and how things actually behave when you wire them up for real.</p>`
+  },
+  takeapart:{
+    cat:'SkillBuilder · Analysis',
+    title:'Take Apart Project',
+    body:`<p>A classic. Took a real device apart, documented everything inside, and tried to understand why the engineers who designed it made the choices they did.</p><p>It's one of the best ways to learn — reverse-engineering teaches you trade-offs between cost, space, reliability, and simplicity in a way no textbook can.</p>`
+  },
+  led:{
+    cat:'Electronics',
+    title:'Small LED Project',
+    body:`<p>A focused, hands-on build working with LEDs, basic circuitry, and soldering. Getting comfortable with the fundamentals — wiring, current, the smell of a hot solder iron — makes all the bigger projects easier.</p>`
+  },
+  rgm:{
+    cat:'Capstone',
+    title:'RGM Project',
+    body:`<p>The RGM project brought together mechanical and electronic skills from earlier modules into a more complex, integrated build. A proper capstone to the SkillBuilder experience.</p><p>This is what engineering starts to look like when you stop doing isolated exercises and start solving real, multi-disciplinary problems.</p>`
+  },
+  skillbuilder:{
+    cat:'Program Overview',
+    title:'What is SkillBuilder?',
+    body:`<p>SkillBuilder is a structured engineering curriculum designed to build real skills through progressive, hands-on projects. Starting from basic mechanisms and electronics all the way through integrated capstone builds.</p><p>The philosophy: you learn engineering by doing engineering. No shortcuts, no simulations — just real builds, real failures, and real lessons.</p>`
+  }
+};
+
+function openModal(key){
+  const m=modals[key];
+  document.getElementById('mCat').textContent=m.cat;
+  document.getElementById('mTitle').textContent=m.title;
+  document.getElementById('mBody').innerHTML=m.body;
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal(e,force){
+  if(force||e.target===document.getElementById('modal'))
+    document.getElementById('modal').classList.remove('open');
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('modal').classList.remove('open')});
+
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:.12});
+document.querySelectorAll('.exp-item,.proj-item,.reveal').forEach((el,i)=>{
+  el.style.transitionDelay=`${(i%4)*80}ms`;
+  obs.observe(el);
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}
+  });
+});
+</script>
+</body>
+</html>
