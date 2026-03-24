@@ -127,6 +127,9 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
 .img-caption{font-size:.75rem;color:var(--muted);letter-spacing:.5px;text-align:center;margin-top:6px;font-style:italic}
 .video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin:20px 0}
 .video-wrap video{width:100%;border-radius:4px;border:1px solid var(--border);display:block}
+.pdf-embed-wrap{margin:20px 0}
+.pdf-embed-label{font-size:.75rem;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.pdf-embed{width:100%;height:600px;border:1px solid var(--border);border-radius:2px;display:block}
 .proj-ext-link{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:12px 22px;background:var(--text);color:#fff;text-decoration:none;font-size:.85rem;font-weight:600;letter-spacing:.5px;border-radius:2px;transition:background .2s}
 .proj-ext-link:hover{background:#333}
 .version-list{display:flex;flex-direction:column;gap:0;margin:20px 0}
@@ -277,7 +280,7 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
     <div class="section-eyebrow">Projects</div>
     <div class="proj-grid">
       <div class="proj-item" onclick="openDetail('chess')">
-        <div class="proj-thumb"><img src="CSFULLVIEW.PNG" alt="Chess Set" style="width:100%;height:100%;object-fit:cover"/></div>
+        <div class="proj-thumb" style="background:#f0eeeb"><img src="CSFULLVIEW.PNG" alt="Chess Set" style="width:100%;height:100%;object-fit:contain"/></div>
         <div class="proj-info">
           <div class="proj-cat">CAD · SolidWorks</div>
           <h3>Chess Set Design</h3>
@@ -451,9 +454,9 @@ const projects={
       {heading:'Overview',body:'Designed and modeled six unique chess pieces in SolidWorks using a cohesive Plants vs. Zombies–inspired theme as part of Cornerstone Engineering 2 (Jan 2026–Present).',imgSrc:'CSFULLVIEW.PNG',imgCaption:'Full chess set assembly — SolidWorks render'},
       {heading:'The Pieces',body:'Each piece maps to a PvZ character: Jalapeno (King, 4.5"), Cherry Bomb (Queen, 4"), Sunflower (Bishop, 3.5"), Peashooter (Knight, 3"), Wall-nut (Rook, 2.5"), Puff-shroom (Pawn, 2").'},
       {heading:'CAD Process',body:'Tools used across all six pieces:',bullets:['Revolve Boss/Base for primary symmetrical bodies','Loft for organic transitions and crown shapes','Circular Pattern for petals and repeating features','Fillet and Chamfer for surface softening','Shell and Wrap for hollowing and surface detail','Mirror Entities for bilateral symmetry']},
-      {heading:'Technical Drawings',body:'Created formal multi-view technical drawings with dimensions, heights, and volume measurements for each piece, plus a full chess board assembly drawing.',links:[
-        {href:'RealDrawingPart1PDF.pdf',label:'View Technical Drawing Part 1 ↗'},
-        {href:'RealDrawingPart2PDF.pdf',label:'View Technical Drawing Part 2 ↗'}
+      {heading:'Technical Drawings',body:'Formal multi-view technical drawings with dimensions, heights, and volume measurements for each piece, plus a full chess board assembly drawing.',pdfs:[
+        {src:'RealDrawingPart1PDF.pdf',label:'Technical Drawing — Part 1'},
+        {src:'RealDrawingPart2PDF.pdf',label:'Technical Drawing — Part 2'}
       ]}
     ],
     otherKeys:['rocket','rgm','mechanism']
@@ -541,6 +544,7 @@ function openDetail(key){
     if(sec.videos) html+=`<div class="video-grid">${sec.videos.map(v=>`<div class="video-wrap"><video controls src="${v.src}"></video>${v.caption?`<p class="img-caption">${v.caption}</p>`:''}</div>`).join('')}</div>`;
     if(sec.link) html+=`<a href="${sec.link.href}" target="_blank" class="proj-ext-link">${sec.link.label}</a>`;
     if(sec.links) html+=sec.links.map(l=>`<a href="${l.href}" target="_blank" class="proj-ext-link" style="margin-right:10px;margin-bottom:8px">${l.label}</a>`).join('');
+    if(sec.pdfs) html+=sec.pdfs.map(p=>`<div class="pdf-embed-wrap"><div class="pdf-embed-label">${p.label}</div><embed src="${p.src}" type="application/pdf" class="pdf-embed"/></div>`).join('');
     if(sec.bullets) html+=`<ul>${sec.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>`;
     if(sec.versions) html+=`<div class="version-list">${sec.versions.map(v=>`<div class="v-row ${v.done?'done':''}"><span class="v-label">${v.label}</span><div class="v-desc">${v.desc}<small>${v.note}</small></div></div>`).join('')}</div>`;
     html+=`</div>`;
