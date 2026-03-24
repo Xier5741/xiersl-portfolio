@@ -158,10 +158,10 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.35);letter-spacing:.5px}
 <nav>
   <div class="logo-mark" onclick="showPage('home')">XL</div>
   <ul class="nav-links">
-    <li><a onclick="showPage('home');scrollTo('#edu-sec')">Experience</a></li>
-    <li><a onclick="showPage('home');scrollTo('#proj-sec')">Projects</a></li>
-    <li><a onclick="showPage('home');scrollTo('#about-sec')">About</a></li>
-    <li><a onclick="showPage('home');scrollTo('#contact-sec')">Contact</a></li>
+    <li><a onclick="showPage('home');goTo('#edu-sec')">Experience</a></li>
+    <li><a onclick="showPage('home');goTo('#proj-sec')">Projects</a></li>
+    <li><a onclick="showPage('home');goTo('#about-sec')">About</a></li>
+    <li><a onclick="showPage('home');goTo('#contact-sec')">Contact</a></li>
   </ul>
 </nav>
 
@@ -392,7 +392,7 @@ function showPage(p){
   window.scrollTo(0,0);
   if(p==='home') initObserver();
 }
-function scrollTo(sel){
+function goTo(sel){
   setTimeout(()=>{const el=document.querySelector(sel);if(el)el.scrollIntoView({behavior:'smooth'})},80);
 }
 
