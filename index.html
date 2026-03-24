@@ -14,19 +14,13 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6}
-
-/* NAV */
 nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 60px;height:58px}
 .logo-mark{width:36px;height:36px;border-radius:50%;background:var(--text);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.8rem;font-weight:700;cursor:pointer;flex-shrink:0}
 .nav-links{display:flex;gap:36px;list-style:none}
 .nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;letter-spacing:.5px;transition:color .2s;cursor:pointer}
 .nav-links a:hover{color:var(--text)}
-
-/* PAGES */
 .page{display:none}
 .page.active{display:block}
-
-/* HERO */
 #hero-sec{padding:100px 60px 80px;max-width:900px}
 .hero-eyebrow{font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:18px;display:flex;align-items:center;gap:10px}
 .hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--muted)}
@@ -39,8 +33,6 @@ h1.hero-name em{font-style:italic;color:var(--accent)}
 .btn-dark:hover{background:#333}
 .btn-outline{background:transparent;color:var(--text);border:1.5px solid var(--text)}
 .btn-outline:hover{background:var(--text);color:#fff}
-
-/* STRIP */
 .summary-strip{display:flex;border-bottom:1px solid var(--border)}
 .sw-col{flex:1;padding:48px 60px;border-right:1px solid var(--border)}
 .sw-col:last-child{border-right:none}
@@ -48,12 +40,8 @@ h1.hero-name em{font-style:italic;color:var(--accent)}
 .sw-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
 .sw-col li{font-size:.95rem;padding-left:16px;position:relative;line-height:1.5}
 .sw-col li::before{content:'—';position:absolute;left:0;color:var(--accent)}
-
-/* SECTION EYEBROW */
 .section-eyebrow{font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:48px;display:flex;align-items:center;gap:14px}
 .section-eyebrow::after{content:'';flex:1;height:1px;background:var(--border)}
-
-/* EXPERIENCE */
 .exp-list{display:flex;flex-direction:column}
 .exp-item{display:grid;grid-template-columns:160px 1fr;gap:40px;padding:32px 0;border-bottom:1px solid var(--border);align-items:start;opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
 .exp-item.visible{opacity:1;transform:none}
@@ -65,8 +53,6 @@ h1.hero-name em{font-style:italic;color:var(--accent)}
 .exp-body ul{margin-top:8px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:6px}
 .exp-body ul li{font-size:.88rem;color:var(--muted);padding-left:14px;position:relative;line-height:1.65}
 .exp-body ul li::before{content:'–';position:absolute;left:0;color:var(--accent)}
-
-/* PROJECTS */
 #proj-sec{padding:80px 60px}
 .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
 .proj-item{background:var(--white);overflow:hidden;cursor:pointer;position:relative;opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}
@@ -79,8 +65,6 @@ h1.hero-name em{font-style:italic;color:var(--accent)}
 .proj-info p{font-size:.83rem;color:var(--muted);line-height:1.65}
 .proj-item::after{content:'↗';position:absolute;top:16px;right:16px;width:30px;height:30px;background:var(--text);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;opacity:0;transform:scale(.7);transition:opacity .2s,transform .2s}
 .proj-item:hover::after{opacity:1;transform:scale(1)}
-
-/* ABOUT */
 #about-sec{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border)}
 .about-left{padding:80px 60px;border-right:1px solid var(--border)}
 .about-right{padding:80px 60px;background:var(--white)}
@@ -95,8 +79,6 @@ h1.hero-name em{font-style:italic;color:var(--accent)}
 .about-stat:first-of-type{border-top:1px solid var(--border)}
 .stat-label{font-size:.78rem;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
 .stat-val{font-family:var(--font);font-size:1.5rem;font-weight:400}
-
-/* CONTACT */
 #contact-sec{padding:100px 60px;background:var(--contact-bg);color:#fff}
 .contact-inner{display:grid;grid-template-columns:1.4fr 1fr;gap:80px;max-width:1000px;margin:0 auto;align-items:start}
 .contact-form-col .section-eyebrow{color:rgba(255,255,255,.35)}
@@ -113,19 +95,14 @@ h1.hero-name em{font-style:italic;color:var(--accent)}
 .form-group input:focus,.form-group textarea:focus{border-color:rgba(255,255,255,.35)}
 .contact-info-col{padding-top:8px}
 .contact-info-col h3{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.1)}
-.contact-info-item{padding:20px 0;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:16px}
-.ci-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.ci-icon svg{width:22px;height:22px}
-.ci-text{}
+.contact-info-item{padding:20px 0;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:16px;text-decoration:none}
+.ci-icon{width:42px;height:42px;border-radius:10px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ci-icon svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .ci-label{font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:3px}
-.ci-val{font-size:.92rem;color:#fff;text-decoration:none;line-height:1.5;display:block}
-a.ci-val:hover{color:#f97316}
-
-/* FOOTER */
+.ci-val{font-size:.92rem;color:#fff;line-height:1.5}
+.contact-info-item:hover .ci-val{color:#f97316}
 footer{background:var(--contact-bg);border-top:1px solid rgba(255,255,255,.08);padding:24px 60px;display:flex;justify-content:space-between;align-items:center}
 footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
-
-/* DETAIL PAGE */
 #detail-page{background:var(--bg)}
 .detail-back{padding:18px 60px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;cursor:pointer;font-size:.82rem;color:var(--muted);letter-spacing:.5px;transition:color .2s}
 .detail-back:hover{color:var(--text)}
@@ -143,4 +120,452 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
 .detail-section ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
 .detail-section ul li{font-size:.93rem;color:var(--muted);padding-left:18px;position:relative;line-height:1.7}
 .detail-section ul li::before{content:'—';position:absolute;left:0;color:var(--accent)}
-.detail-img
+.detail-img-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;margin:24px 0}
+.detail-img-grid.single{grid-template-columns:1fr}
+.detail-img{width:100%;aspect-ratio:4/3;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:3.5rem;overflow:hidden}
+.detail-img img{width:100%;height:100%;object-fit:cover}
+.img-caption{font-size:.75rem;color:var(--muted);letter-spacing:.5px;text-align:center;margin-top:6px;font-style:italic}
+.video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin:20px 0}
+.video-wrap video{width:100%;border-radius:4px;border:1px solid var(--border);display:block}
+.proj-ext-link{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:12px 22px;background:var(--text);color:#fff;text-decoration:none;font-size:.85rem;font-weight:600;letter-spacing:.5px;border-radius:2px;transition:background .2s}
+.proj-ext-link:hover{background:#333}
+.version-list{display:flex;flex-direction:column;gap:0;margin:20px 0}
+.v-row{display:flex;align-items:flex-start;gap:20px;padding:16px 20px;border-left:3px solid var(--border);margin-left:16px;position:relative}
+.v-row::before{content:'';position:absolute;left:-7px;top:22px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--border)}
+.v-row.done{border-color:var(--accent)}
+.v-row.done::before{border-color:var(--accent);background:var(--accent)}
+.v-label{font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--accent);min-width:70px;padding-top:2px}
+.v-desc{font-size:.9rem;color:var(--text);line-height:1.6}
+.v-desc small{display:block;font-size:.8rem;color:var(--muted);margin-top:3px}
+.other-projects{border-top:1px solid var(--border);padding:60px 60px 80px;background:var(--white)}
+.other-projects .section-eyebrow{margin-bottom:32px}
+.other-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.other-card{cursor:pointer;overflow:hidden;background:var(--bg);transition:opacity .2s}
+.other-card:hover{opacity:.8}
+.other-thumb{width:100%;aspect-ratio:16/9;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:2.5rem}
+.other-info{padding:14px 16px}
+.other-info .proj-cat{font-size:.68rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.other-info h4{font-size:.92rem;font-weight:700}
+@media(max-width:900px){
+  nav{padding:0 24px}
+  #hero-sec,#proj-sec,.detail-hero,.detail-skills,.detail-content,.other-projects,#contact-sec,footer{padding-left:24px;padding-right:24px}
+  .sw-col{padding:36px 24px}
+  .exp-item{grid-template-columns:1fr}
+  .proj-grid,.other-grid{grid-template-columns:repeat(2,1fr)}
+  #about-sec{grid-template-columns:1fr}
+  .about-left{border-right:none;border-bottom:1px solid var(--border)}
+  .detail-back{padding:14px 24px}
+  footer{flex-direction:column;gap:8px;text-align:center}
+  .contact-inner{grid-template-columns:1fr;gap:48px}
+}
+@media(max-width:560px){
+  .proj-grid,.other-grid,.detail-img-grid{grid-template-columns:1fr}
+  .summary-strip{flex-direction:column}
+  .sw-col{border-right:none;border-bottom:1px solid var(--border)}
+  h1.hero-name{font-size:2.8rem}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-mark" onclick="showPage('home')">XL</div>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home');goTo('#edu-sec')">Experience</a></li>
+    <li><a onclick="showPage('home');goTo('#proj-sec')">Projects</a></li>
+    <li><a onclick="showPage('home');goTo('#about-sec')">About</a></li>
+    <li><a onclick="showPage('home');goTo('#contact-sec')">Contact</a></li>
+  </ul>
+</nav>
+
+<div id="home-page" class="page active">
+
+  <section id="hero-sec">
+    <div class="hero-eyebrow">Engineering Portfolio</div>
+    <h1 class="hero-name">Xier<br><em>Lin.</em></h1>
+    <p class="hero-desc">Mechanical Engineering student with an Industrial Engineering minor at Northeastern University. I like to build things that work — and apply them to problems that matter.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-dark" onclick="showPage('home');setTimeout(()=>document.getElementById('proj-sec').scrollIntoView({behavior:'smooth'}),50)">View Projects</a>
+      <a class="btn btn-outline" onclick="showPage('home');setTimeout(()=>document.getElementById('contact-sec').scrollIntoView({behavior:'smooth'}),50)">Get In Touch</a>
+    </div>
+  </section>
+
+  <div class="summary-strip">
+    <div class="sw-col">
+      <h3>Strengths</h3>
+      <ul>
+        <li>Loves building things that actually work</li>
+        <li>Comfortable failing — and iterating fast</li>
+        <li>Rubik's cube in under 15 seconds</li>
+      </ul>
+    </div>
+    <div class="sw-col">
+      <h3>Skills</h3>
+      <ul>
+        <li>SolidWorks · AutoCAD · MATLAB</li>
+        <li>3D Printing · Soldering</li>
+        <li>Microsoft Excel</li>
+      </ul>
+    </div>
+  </div>
+
+  <section id="edu-sec" style="padding:80px 60px 40px">
+    <div class="section-eyebrow">Education</div>
+    <div class="exp-list">
+      <div class="exp-item">
+        <div>
+          <div class="exp-date">2024 – Present</div>
+          <div class="exp-loc">Boston, MA</div>
+        </div>
+        <div class="exp-body">
+          <div class="company">Northeastern University</div>
+          <h4>B.S. Mechanical Engineering, Minor in Industrial Engineering</h4>
+          <p>John Martinson Honors Program · Club Archery · Expected May 2029</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:0 60px 40px">
+    <div class="section-eyebrow">College STEM Experience</div>
+    <div class="exp-list">
+      <div class="exp-item">
+        <div>
+          <div class="exp-date">Mar 2026 – Present</div>
+          <div class="exp-loc">Boston, MA</div>
+        </div>
+        <div class="exp-body">
+          <div class="company">Northeastern University</div>
+          <h4>Undergraduate Research Assistant</h4>
+          <ul>
+            <li>Conduct interdisciplinary research on AI & emerging tech in business — social media marketing, digital platforms, customer analytics, and advertising effectiveness.</li>
+            <li>Contribute to projects in NLP, political science, and sustainability.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:0 60px 80px">
+    <div class="section-eyebrow">Early STEM Experience</div>
+    <div class="exp-list">
+      <div class="exp-item">
+        <div>
+          <div class="exp-date">Jun – Aug 2024</div>
+          <div class="exp-loc">Philadelphia, PA</div>
+        </div>
+        <div class="exp-body">
+          <div class="company">Temple University · Heights Philadelphia STEM Program</div>
+          <h4>Research Intern — Mechanobiology Lab</h4>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div>
+          <div class="exp-date">Jul – Aug 2023</div>
+          <div class="exp-loc">Philadelphia, PA</div>
+        </div>
+        <div class="exp-body">
+          <div class="company">Wistar Institute — High School Biomedical Research Program</div>
+          <h4>Research Intern — Cancer Biology</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proj-sec">
+    <div class="section-eyebrow">Projects</div>
+    <div class="proj-grid">
+      <div class="proj-item" onclick="openDetail('chess')">
+        <div class="proj-thumb">♟️</div>
+        <div class="proj-info">
+          <div class="proj-cat">CAD · SolidWorks</div>
+          <h3>Chess Set Design</h3>
+          <p>Plants vs. Zombies–themed chess set modeled in SolidWorks with full technical drawings.</p>
+        </div>
+      </div>
+      <div class="proj-item" onclick="openDetail('rocket')">
+        <div class="proj-thumb">🚀</div>
+        <div class="proj-info">
+          <div class="proj-cat">Cornerstone Eng. 2 · Team</div>
+          <h3>Rocket Launcher Game</h3>
+          <p>Air-pressure launcher with sensor-based scoring — designed as a STEM education tool.</p>
+        </div>
+      </div>
+      <div class="proj-item" onclick="openDetail('rgm')">
+        <div class="proj-thumb">⚙️</div>
+        <div class="proj-info">
+          <div class="proj-cat">Cornerstone Eng. 1 · Team</div>
+          <h3>Rube Goldberg Machine</h3>
+          <p>Custom pulley and chain-reaction module engineered from cardboard and repurposed materials.</p>
+        </div>
+      </div>
+      <div class="proj-item" onclick="openDetail('mechanism')">
+        <div class="proj-thumb">🔩</div>
+        <div class="proj-info">
+          <div class="proj-cat">SkillBuilder · Mechanism</div>
+          <h3>Mechanism Project</h3>
+          <p>Iterated through 4 versions of a mechanical system — from first prototype to competition-ready build.</p>
+        </div>
+      </div>
+      <div class="proj-item" onclick="openDetail('electronic')">
+        <div class="proj-thumb">⚡</div>
+        <div class="proj-info">
+          <div class="proj-cat">SkillBuilder · Electronics</div>
+          <h3>Electronics Project</h3>
+          <p>Hands-on circuits, components, and troubleshooting — building the electrical foundation every engineer needs.</p>
+        </div>
+      </div>
+      <div class="proj-item" onclick="openDetail('research')">
+        <div class="proj-thumb">🔬</div>
+        <div class="proj-info">
+          <div class="proj-cat">Bioengineering Research</div>
+          <h3>Mechanobiology Research</h3>
+          <p>Fibronectin mechanobiology in wounded skin tissue — confocal microscopy, PDMS substrates, metastasis analysis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about-sec">
+    <div class="about-left">
+      <div class="about-avatar-box">
+        <img src="MyPIC.PNG" alt="Xier Lin"/>
+      </div>
+      <div class="about-stat"><span class="stat-label">University</span><span class="stat-val">Northeastern</span></div>
+      <div class="about-stat"><span class="stat-label">Year</span><span class="stat-val">1st</span></div>
+      <div class="about-stat"><span class="stat-label">Major</span><span class="stat-val">Mechanical Engineering</span></div>
+      <div class="about-stat"><span class="stat-label">Minor</span><span class="stat-val">Industrial Engineering</span></div>
+      <div class="about-stat"><span class="stat-label">Hometown</span><span class="stat-val">Philadelphia, PA</span></div>
+    </div>
+    <div class="about-right">
+      <div class="section-eyebrow">About</div>
+      <h2>Hey, I'm<br><em>Xier.</em></h2>
+      <p>Born in LA, raised in Philadelphia, now studying in Boston. Moving around a lot taught me to adapt quickly, stay curious, and find community wherever I land.</p>
+      <p>I'm a 1st-year in Northeastern's John Martinson Honors Program studying Mechanical Engineering with an Industrial Engineering minor. My goal is to build functional, useful things and apply them to real community problems.</p>
+      <p>Outside the lab you'll find me running marathons, solving Rubik's cubes in under 15 seconds, cooking something questionable, or competing in archery — I took 1st place at the Northeastern Invitational.</p>
+      <div class="interests">
+        <span class="tag">🏹 Archery — 1st Place NEU Invitational</span>
+        <span class="tag">🏃 Marathon Runner</span>
+        <span class="tag">🎲 Rubik's Cube — Sub 15s</span>
+        <span class="tag">🍳 Cooking</span>
+        <span class="tag">🐾 Animal Volunteer</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact-sec">
+    <div class="contact-inner">
+      <div class="contact-form-col">
+        <div class="section-eyebrow">Contact</div>
+        <h2>Let's<br><em>Talk.</em></h2>
+        <p>Whether you're a recruiter, fellow engineer, or just curious — I'd love to hear from you.</p>
+        <form class="contact-form" onsubmit="handleForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name *</label>
+              <input type="text" id="fc-name" placeholder="Xier Lin" required/>
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" id="fc-email" placeholder="you@email.com" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Message *</label>
+            <textarea id="fc-msg" rows="5" placeholder="What's on your mind?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-dark" style="width:100%;text-align:center;margin-top:4px">Send Message</button>
+          <p id="form-success" style="display:none;margin-top:14px;color:#f97316;font-size:.88rem;font-weight:600">Message sent! I'll get back to you soon.</p>
+        </form>
+      </div>
+      <div class="contact-info-col">
+        <h3>Contact Info</h3>
+        <a href="mailto:xsl10086@gmail.com" class="contact-info-item">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 4l10 9 10-9"/></svg>
+          </div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-val">xsl10086@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/xier-lin-181302275" target="_blank" class="contact-info-item">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M7 10v7M7 7v.5M12 17v-4a3 3 0 0 1 6 0v4M12 10v7"/></svg>
+          </div>
+          <div>
+            <div class="ci-label">LinkedIn</div>
+            <div class="ci-val">xier-lin-181302275</div>
+          </div>
+        </a>
+        <div class="contact-info-item">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <div>
+            <div class="ci-label">University</div>
+            <div class="ci-val">Northeastern University, Boston MA</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 10V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8"/><path d="M12 12H2M22 10l-4 4m0 0l-4-4m4 4V10"/></svg>
+          </div>
+          <div>
+            <div class="ci-label">Program</div>
+            <div class="ci-val">John Martinson Honors Program</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Xier Lin — Engineering Portfolio</span>
+    <span>Northeastern University · Boston, MA</span>
+  </footer>
+
+</div>
+
+<div id="detail-page" class="page">
+  <div class="detail-back" onclick="showPage('home')">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to Projects
+  </div>
+  <div id="detail-inner"></div>
+</div>
+
+<script>
+function showPage(p){
+  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
+  document.getElementById(p==='home'?'home-page':'detail-page').classList.add('active');
+  window.scrollTo(0,0);
+  if(p==='home') initObserver();
+}
+function goTo(sel){
+  setTimeout(()=>{const el=document.querySelector(sel);if(el)el.scrollIntoView({behavior:'smooth'})},80);
+}
+function handleForm(e){
+  e.preventDefault();
+  const name=document.getElementById('fc-name').value;
+  const email=document.getElementById('fc-email').value;
+  const msg=document.getElementById('fc-msg').value;
+  window.location.href=`mailto:xsl10086@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(name)}&body=${encodeURIComponent(msg+'\n\nFrom: '+name+'\nEmail: '+email)}`;
+  document.getElementById('form-success').style.display='block';
+  e.target.reset();
+}
+
+const projects={
+  chess:{
+    cat:'CAD · SolidWorks',
+    title:'Chess Set Design',
+    sub:'Plants vs. Zombies–Themed SolidWorks Modeling — Individual Project',
+    skills:['SolidWorks','3D Modeling','Technical Drawing','Extrude','Revolve','Loft','Fillet'],
+    sections:[
+      {heading:'Overview',body:'Designed and modeled six unique chess pieces in SolidWorks using a cohesive Plants vs. Zombies–inspired theme as part of Cornerstone Engineering 2 (Jan 2026–Present).',emoji:'♟️'},
+      {heading:'The Pieces',body:'Each piece maps to a PvZ character: Jalapeno (King, 4.5"), Cherry Bomb (Queen, 4"), Sunflower (Bishop, 3.5"), Peashooter (Knight, 3"), Wall-nut (Rook, 2.5"), Puff-shroom (Pawn, 2").'},
+      {heading:'CAD Process',body:'Tools used across all six pieces:',bullets:['Revolve Boss/Base for primary symmetrical bodies','Loft for organic transitions and crown shapes','Circular Pattern for petals and repeating features','Fillet and Chamfer for surface softening','Shell and Wrap for hollowing and surface detail','Mirror Entities for bilateral symmetry']},
+      {heading:'Technical Drawings',body:'Created formal multi-view technical drawings with dimensions, heights, and volume measurements for each piece, plus a full chess board assembly drawing.'}
+    ],
+    otherKeys:['rocket','rgm','mechanism']
+  },
+  rocket:{
+    cat:'Cornerstone Engineering 2 · Team Project',
+    title:'Rocket Launcher Game',
+    sub:'Air-Pressure Ball Launcher with Sensor-Based Scoring — Team Member & Project Manager',
+    skills:['Mechanical Design','Sensor Integration','Project Management','STEM Education Design','Prototyping'],
+    sections:[
+      {heading:'Overview',body:'An ongoing Cornerstone Engineering 2 project designing an educational game for young learners. A user-released weight compresses air in a bottle to launch a ball "rocket" toward planet-themed targets.',emoji:'🚀'},
+      {heading:'Mechanism Design',body:'Core mechanism converts gravitational potential energy into pneumatic pressure.',bullets:['Weight-driven air compression via sealed bottle','Adjustable launch angle for difficulty scaling','Planet-themed target system']},
+      {heading:'Sensor Integration & Educational Goals',body:'Proposed motion sensors at each target to trigger dynamic outputs.',bullets:['Motion sensors for automatic scoring','Dynamic feedback — lights, sounds, scoreboard','Designed to foster persistence and creative thinking in young learners']}
+    ],
+    otherKeys:['chess','rgm','mechanism']
+  },
+  rgm:{
+    cat:'Cornerstone Engineering 1 · Team Project',
+    title:'Rube Goldberg Machine',
+    sub:'Chain-Reaction Device — Sep–Dec 2025 · Group E',
+    skills:['Mechanism Design','Cardboard Fabrication','Iterative Prototyping','Chain-Reaction Systems','Team Collaboration'],
+    sections:[
+      {heading:'What is a Rube Goldberg Machine?',body:'An intentionally over-engineered device that performs a simple task through a long, elaborate chain of events. Each stage triggers the next.',imgSrc:'WhatIsRGM.jpeg',imgCaption:'What is a Rube Goldberg Machine?'},
+      {heading:'Our Design',body:"Group E built a multi-stage chain-reaction machine. My contribution was a custom pulley and weighted-drop module that integrated with the prior team's mechanism to initiate a continuous kinetic sequence.",imgSrc:'RGMbeforeafter.png',imgCaption:'Before & after — design to build'},
+      {heading:'Build Process',body:'Constructed from cardboard and repurposed materials through multiple iterations.',imgs:[{src:'RGM1.jpg',caption:'Early prototype build'},{src:'RGM2.jpg',caption:'Final assembly'}]},
+      {heading:'Prototype Model & Code Flow',imgs:[{src:'RGMmodel.png',caption:'Prototype model'},{src:'RGMflowchart.png',caption:'Code flow chart'}]},
+      {heading:'Video Runs',body:'Our machine in action — from first version to most successful run.',videos:[{src:'RGMVersion1.mp4',caption:'Version 1 run'},{src:'VersionFinal.mp4',caption:'Final version run'},{src:'RGMMostSuccessful.mp4',caption:'Most successful run 🎉'}]},
+      {heading:'Full Group Project Site',body:"View the full Group E documentation including all team members' contributions.",link:{href:'https://sites.google.com/view/group-e-rgm-/home',label:'View Full Group E Project Site ↗'}}
+    ],
+    otherKeys:['chess','rocket','mechanism']
+  },
+  mechanism:{
+    cat:'SkillBuilder · Mechanism',
+    title:'Mechanism Project',
+    sub:'Iterative Mechanical System Design — SkillBuilder Program',
+    skills:['Mechanical Design','Iterative Prototyping','Fabrication','Competition Build'],
+    sections:[
+      {heading:'Overview',body:'Designing a mechanical system and pushing it through version after version until it worked. Each failure was a lesson, not a setback.',emoji:'🔩'},
+      {heading:'Design Progression',body:'Four major versions, each building on the last:',versions:[
+        {label:'V0',desc:'Initial prototype',note:'First proof of concept',done:false},
+        {label:'V1',desc:'First redesign',note:'Failed — revealed critical constraints',done:false},
+        {label:'V2',desc:'Second redesign',note:'Failed — exposed structural limitations',done:false},
+        {label:'V3 Draft',desc:'Incomplete build',note:'Right approach identified',done:false},
+        {label:'V3 Final',desc:'Competition-ready',note:'Fully functional — submitted for competition',done:true}
+      ]},
+      {heading:'Key Takeaway',body:"Failure is data. Each version that didn't work told me exactly what to fix."}
+    ],
+    otherKeys:['electronic','chess','rgm']
+  },
+  electronic:{
+    cat:'SkillBuilder · Electronics',
+    title:'Electronics Project',
+    sub:'Circuits, Components & Troubleshooting — SkillBuilder Program',
+    skills:['Circuit Design','Soldering','Electronic Components','Troubleshooting','LED Systems'],
+    sections:[
+      {heading:'Overview',body:'Hands-on exploration of electronic systems — building circuits from scratch and developing troubleshooting instincts.',emoji:'⚡'},
+      {heading:'What I Built',bullets:['Designed and wired basic circuits from schematics','Practiced soldering on real PCB-style layouts','Built and tested an LED-based circuit system','Debugged live circuits using systematic fault isolation']},
+      {heading:'Why It Matters',body:'Getting comfortable with the fundamentals — current, resistance, voltage — makes every subsequent project easier.'}
+    ],
+    otherKeys:['mechanism','chess','research']
+  },
+  research:{
+    cat:'Bioengineering Research',
+    title:'Mechanobiology Research',
+    sub:'Fibronectin in Wounded Skin Tissue — Temple University, Summer 2024',
+    skills:['Confocal Microscopy','Immunofluorescence Imaging','PDMS Substrate Fabrication','Quantitative Image Analysis','Research Communication'],
+    sections:[
+      {heading:'Overview',body:"Investigated fibronectin mechanobiology in wounded skin tissue in Dr. Wang's Mechanobiology Lab at Temple University — specifically how fiber alignment influences directional cell migration and cancer metastasis.",emoji:'🔬'},
+      {heading:'Methods',bullets:['Immunofluorescence imaging and confocal microscopy on tissue samples','Transformed fluorescence images into quantitative data: nuclei counts, fibronectin area, fiber coherency','High-throughput casting of thin anisotropic PDMS substrates','Comparative analysis of control vs. tumor-conditioned matrices']},
+      {heading:'Findings & Impact',body:'Identified significant differences in fiber alignment between control and tumor-conditioned matrices linked to directional cell migration pathways implicated in metastasis. Presented findings at a formal research symposium.'}
+    ],
+    otherKeys:['chess','rocket','electronic']
+  }
+};
+
+function openDetail(key){
+  const p=projects[key];
+  let html=`<div class="detail-hero"><div class="detail-cat">${p.cat}</div><h2>${p.title}</h2><p class="detail-sub">${p.sub}</p></div><div class="detail-skills">${p.skills.map(s=>`<span class="skill-pill">${s}</span>`).join('')}</div><div class="detail-content">`;
+  p.sections.forEach(sec=>{
+    html+=`<div class="detail-section"><h3>${sec.heading}</h3>`;
+    if(sec.emoji) html+=`<div class="detail-img-grid single"><div class="detail-img">${sec.emoji}</div></div>`;
+    if(sec.body) html+=`<p>${sec.body}</p>`;
+    if(sec.imgSrc) html+=`<div class="detail-img-grid single"><div class="detail-img"><img src="${sec.imgSrc}" alt="${sec.imgCaption||''}"/></div></div>${sec.imgCaption?`<p class="img-caption">${sec.imgCaption}</p>`:''}`;
+    if(sec.imgs) html+=`<div class="detail-img-grid">${sec.imgs.map(i=>`<div><div class="detail-img"><img src="${i.src}" alt="${i.caption||''}"/></div>${i.caption?`<p class="img-caption">${i.caption}</p>`:''}</div>`).join('')}</div>`;
+    if(sec.videos) html+=`<div class="video-grid">${sec.videos.map(v=>`<div class="video-wrap"><video controls src="${v.src}"></video>${v.caption?`<p class="img-caption">${v.caption}</p>`:''}</div>`).join('')}</div>`;
+    if(sec.link) html+=`<a href="${sec.link.href}" target="_blank" class="proj-ext-link">${sec.link.label}</a>`;
+    if(sec.bullets) html+=`<ul>${sec.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>`;
+    if(sec.versions) html+=`<div class="version-list">${sec.versions.map(v=>`<div class="v-row ${v.done?'done':''}"><span class="v-label">${v.label}</span><div class="v-desc">${v.desc}<small>${v.note}</small></div></div>`).join('')}</div>`;
+    html+=`</div>`;
+  });
+  html+=`</div><div class="other-projects"><div class="section-eyebrow">Other Projects</div><div class="other-grid">${p.otherKeys.map(k=>{const o=projects[k];const em={chess:'♟️',rocket:'🚀',rgm:'⚙️',mechanism:'🔩',electronic:'⚡',research:'🔬'};return`<div class="other-card" onclick="openDetail('${k}')"><div class="other-thumb">${em[k]}</div><div class="other-info"><div class="proj-cat">${o.cat}</div><h4>${o.title}</h4></div></div>`;}).join('')}</div></div>`;
+  document.getElementById('detail-inner').innerHTML=html;
+  showPage('detail');
+}
+
+function initObserver(){
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});},{threshold:.12});
+  document.querySelectorAll('.exp-item,.proj-item').forEach((el,i)=>{el.style.transitionDelay=`${(i%4)*80}ms`;obs.observe(el);});
+}
+initObserver();
+</script>
+</body>
+</html>
