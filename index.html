@@ -277,7 +277,7 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
     <div class="section-eyebrow">Projects</div>
     <div class="proj-grid">
       <div class="proj-item" onclick="openDetail('chess')">
-        <div class="proj-thumb">♟️</div>
+        <div class="proj-thumb"><img src="CSFULLVIEW.PNG" alt="Chess Set" style="width:100%;height:100%;object-fit:cover"/></div>
         <div class="proj-info">
           <div class="proj-cat">CAD · SolidWorks</div>
           <h3>Chess Set Design</h3>
@@ -448,10 +448,13 @@ const projects={
     sub:'Plants vs. Zombies–Themed SolidWorks Modeling — Individual Project',
     skills:['SolidWorks','3D Modeling','Technical Drawing','Extrude','Revolve','Loft','Fillet'],
     sections:[
-      {heading:'Overview',body:'Designed and modeled six unique chess pieces in SolidWorks using a cohesive Plants vs. Zombies–inspired theme as part of Cornerstone Engineering 2 (Jan 2026–Present).',emoji:'♟️'},
+      {heading:'Overview',body:'Designed and modeled six unique chess pieces in SolidWorks using a cohesive Plants vs. Zombies–inspired theme as part of Cornerstone Engineering 2 (Jan 2026–Present).',imgSrc:'CSFULLVIEW.PNG',imgCaption:'Full chess set assembly — SolidWorks render'},
       {heading:'The Pieces',body:'Each piece maps to a PvZ character: Jalapeno (King, 4.5"), Cherry Bomb (Queen, 4"), Sunflower (Bishop, 3.5"), Peashooter (Knight, 3"), Wall-nut (Rook, 2.5"), Puff-shroom (Pawn, 2").'},
       {heading:'CAD Process',body:'Tools used across all six pieces:',bullets:['Revolve Boss/Base for primary symmetrical bodies','Loft for organic transitions and crown shapes','Circular Pattern for petals and repeating features','Fillet and Chamfer for surface softening','Shell and Wrap for hollowing and surface detail','Mirror Entities for bilateral symmetry']},
-      {heading:'Technical Drawings',body:'Created formal multi-view technical drawings with dimensions, heights, and volume measurements for each piece, plus a full chess board assembly drawing.'}
+      {heading:'Technical Drawings',body:'Created formal multi-view technical drawings with dimensions, heights, and volume measurements for each piece, plus a full chess board assembly drawing.',links:[
+        {href:'RealDrawingPart1PDF.pdf',label:'View Technical Drawing Part 1 ↗'},
+        {href:'RealDrawingPart2PDF.pdf',label:'View Technical Drawing Part 2 ↗'}
+      ]}
     ],
     otherKeys:['rocket','rgm','mechanism']
   },
@@ -537,6 +540,7 @@ function openDetail(key){
     if(sec.imgs) html+=`<div class="detail-img-grid">${sec.imgs.map(i=>`<div><div class="detail-img"><img src="${i.src}" alt="${i.caption||''}"/></div>${i.caption?`<p class="img-caption">${i.caption}</p>`:''}</div>`).join('')}</div>`;
     if(sec.videos) html+=`<div class="video-grid">${sec.videos.map(v=>`<div class="video-wrap"><video controls src="${v.src}"></video>${v.caption?`<p class="img-caption">${v.caption}</p>`:''}</div>`).join('')}</div>`;
     if(sec.link) html+=`<a href="${sec.link.href}" target="_blank" class="proj-ext-link">${sec.link.label}</a>`;
+    if(sec.links) html+=sec.links.map(l=>`<a href="${l.href}" target="_blank" class="proj-ext-link" style="margin-right:10px;margin-bottom:8px">${l.label}</a>`).join('');
     if(sec.bullets) html+=`<ul>${sec.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>`;
     if(sec.versions) html+=`<div class="version-list">${sec.versions.map(v=>`<div class="v-row ${v.done?'done':''}"><span class="v-label">${v.label}</span><div class="v-desc">${v.desc}<small>${v.note}</small></div></div>`).join('')}</div>`;
     html+=`</div>`;
