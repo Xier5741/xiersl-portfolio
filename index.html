@@ -58,8 +58,8 @@ h1.hero-name em{font-style:italic;color:var(--accent)}
 .proj-item{background:var(--white);overflow:hidden;cursor:pointer;position:relative;opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}
 .proj-item.visible{opacity:1;transform:none}
 .proj-thumb{width:100%;aspect-ratio:4/3;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:3rem;transition:transform .5s;overflow:hidden}
-.proj-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.proj-thumb img[src="CSFULLVIEW.PNG"]{object-fit:contain;background:#f0eeeb}
+/* All thumbnail images fill the box by default */
+.proj-thumb img,.other-thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .proj-item:hover .proj-thumb{transform:scale(1.04)}
 .proj-info{padding:20px 22px 24px}
 .proj-cat{font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
@@ -148,7 +148,6 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
 .other-card{cursor:pointer;overflow:hidden;background:var(--bg);transition:opacity .2s}
 .other-card:hover{opacity:.8}
 .other-thumb{width:100%;aspect-ratio:4/3;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:2.5rem;overflow:hidden}
-.other-thumb img{width:100%;height:100%;object-fit:contain}
 .other-info{padding:14px 16px}
 .other-info .proj-cat{font-size:.68rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 .other-info h4{font-size:.92rem;font-weight:700}
@@ -283,7 +282,7 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
     <div class="section-eyebrow">Projects</div>
     <div class="proj-grid">
       <div class="proj-item" onclick="openDetail('chess')">
-        <div class="proj-thumb" style="background:#f0eeeb"><img src="CSFULLVIEW.PNG" alt="Chess Set"/></div>
+        <div class="proj-thumb" style="background:#f0eeeb"><img src="CSFULLVIEW.PNG" alt="Chess Set" style="object-fit:cover"/></div>
         <div class="proj-info">
           <div class="proj-cat">CAD · SolidWorks</div>
           <h3>Chess Set Design</h3>
@@ -299,7 +298,7 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
         </div>
       </div>
       <div class="proj-item" onclick="openDetail('rgm')">
-        <div class="proj-thumb"><img src="RGM2.jpg" alt="Rube Goldberg Machine"/></div>
+        <div class="proj-thumb"><img src="RGM2.jpg" alt="Rube Goldberg Machine" style="object-fit:cover"/></div>
         <div class="proj-info">
           <div class="proj-cat">Cornerstone Eng. 1 · Team</div>
           <h3>Rube Goldberg Machine</h3>
@@ -307,7 +306,7 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
         </div>
       </div>
       <div class="proj-item" onclick="openDetail('mechanism')">
-        <div class="proj-thumb"><img src="MechPro.heic" alt="Mechanism Project"/></div>
+        <div class="proj-thumb"><img src="MechPro.heic" alt="Mechanism Project" style="object-fit:cover"/></div>
         <div class="proj-info">
           <div class="proj-cat">SkillBuilder · Mechanism</div>
           <h3>Mechanism Project</h3>
@@ -533,6 +532,16 @@ const projects={
   }
 };
 
+// Inline styles here override everything — this is the definitive fix
+const thumbs={
+  chess:`<img src="CSFULLVIEW.PNG" alt="Chess" style="width:100%;height:100%;object-fit:cover;display:block"/>`,
+  rocket:`<span style="font-size:2.5rem">🚀</span>`,
+  rgm:`<img src="RGM2.jpg" alt="RGM" style="width:100%;height:100%;object-fit:cover;display:block"/>`,
+  mechanism:`<img src="MechPro.heic" alt="Mechanism" style="width:100%;height:100%;object-fit:cover;display:block"/>`,
+  electronic:`<span style="font-size:2.5rem">⚡</span>`,
+  research:`<span style="font-size:2.5rem">🔬</span>`
+};
+
 function openDetail(key){
   const p=projects[key];
   let html=`<div class="detail-hero"><div class="detail-cat">${p.cat}</div><h2>${p.title}</h2><p class="detail-sub">${p.sub}</p></div><div class="detail-skills">${p.skills.map(s=>`<span class="skill-pill">${s}</span>`).join('')}</div><div class="detail-content">`;
@@ -540,8 +549,8 @@ function openDetail(key){
     html+=`<div class="detail-section"><h3>${sec.heading}</h3>`;
     if(sec.emoji) html+=`<div class="detail-img-grid single"><div class="detail-img">${sec.emoji}</div></div>`;
     if(sec.body) html+=`<p>${sec.body}</p>`;
-    if(sec.imgSrc) html+=`<div class="detail-img-grid single"><div class="detail-img" style="background:#f0eeeb;aspect-ratio:16/9"><img src="${sec.imgSrc}" alt="${sec.imgCaption||''}" style="width:100%;height:100%;object-fit:${sec.imgFit||'contain'};object-position:${sec.imgPos||'center'}"/></div></div>${sec.imgCaption?`<p class="img-caption">${sec.imgCaption}</p>`:''}`;
-    if(sec.imgs) html+=`<div class="detail-img-grid">${sec.imgs.map(i=>`<div><div class="detail-img"><img src="${i.src}" alt="${i.caption||''}"/></div>${i.caption?`<p class="img-caption">${i.caption}</p>`:''}</div>`).join('')}</div>`;
+    if(sec.imgSrc) html+=`<div class="detail-img-grid single"><div class="detail-img" style="background:#f0eeeb;aspect-ratio:16/9"><img src="${sec.imgSrc}" alt="${sec.imgCaption||''}" style="width:100%;height:100%;object-fit:${sec.imgFit||'cover'};object-position:${sec.imgPos||'center'}"/></div></div>${sec.imgCaption?`<p class="img-caption">${sec.imgCaption}</p>`:''}`;
+    if(sec.imgs) html+=`<div class="detail-img-grid">${sec.imgs.map(i=>`<div><div class="detail-img"><img src="${i.src}" alt="${i.caption||''}" style="width:100%;height:100%;object-fit:cover;display:block"/></div>${i.caption?`<p class="img-caption">${i.caption}</p>`:''}</div>`).join('')}</div>`;
     if(sec.videos) html+=`<div class="video-grid">${sec.videos.map(v=>`<div class="video-wrap"><video controls src="${v.src}"></video>${v.caption?`<p class="img-caption">${v.caption}</p>`:''}</div>`).join('')}</div>`;
     if(sec.link) html+=`<a href="${sec.link.href}" target="_blank" class="proj-ext-link">${sec.link.label}</a>`;
     if(sec.links) html+=sec.links.map(l=>`<a href="${l.href}" target="_blank" class="proj-ext-link" style="margin-right:10px;margin-bottom:8px">${l.label}</a>`).join('');
@@ -550,14 +559,6 @@ function openDetail(key){
     if(sec.versions) html+=`<div class="version-list">${sec.versions.map(v=>`<div class="v-row ${v.done?'done':''}"><span class="v-label">${v.label}</span><div class="v-desc">${v.desc}<small>${v.note}</small></div></div>`).join('')}</div>`;
     html+=`</div>`;
   });
-  const thumbs={
-    chess:`<img src="CSFULLVIEW.PNG" alt="Chess" style="width:100%;height:100%;object-fit:contain"/>`,
-    rocket:`<span style="font-size:2.5rem">🚀</span>`,
-    rgm:`<img src="RGM2.jpg" alt="RGM" style="width:100%;height:100%;object-fit:cover"/>`,
-    mechanism:`<img src="MechPro.heic" alt="Mechanism" style="width:100%;height:100%;object-fit:cover"/>`,
-    electronic:`<span style="font-size:2.5rem">⚡</span>`,
-    research:`<span style="font-size:2.5rem">🔬</span>`
-  };
   html+=`</div><div class="other-projects"><div class="section-eyebrow">Other Projects</div><div class="other-grid">${p.otherKeys.map(k=>{const o=projects[k];return`<div class="other-card" onclick="openDetail('${k}')"><div class="other-thumb">${thumbs[k]}</div><div class="other-info"><div class="proj-cat">${o.cat}</div><h4>${o.title}</h4></div></div>`;}).join('')}</div></div>`;
   document.getElementById('detail-inner').innerHTML=html;
   showPage('detail');
