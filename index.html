@@ -145,7 +145,7 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
 .other-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
 .other-card{cursor:pointer;overflow:hidden;background:var(--bg);transition:opacity .2s}
 .other-card:hover{opacity:.8}
-.other-thumb{width:100%;aspect-ratio:16/9;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:2.5rem}
+.other-thumb{width:100%;aspect-ratio:4/3;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:2.5rem;overflow:hidden}
 .other-info{padding:14px 16px}
 .other-info .proj-cat{font-size:.68rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 .other-info h4{font-size:.92rem;font-weight:700}
@@ -177,7 +177,7 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
   <ul class="nav-links">
     <li><a onclick="showPage('home');goTo('#edu-sec')">Experience</a></li>
     <li><a onclick="showPage('home');goTo('#proj-sec')">Projects</a></li>
-    <li><a onclick="showPage('home');goTo('#about-sec')">About</a></li>
+    <li><a onclick="showPage('home');goTo('#about-sec')">About Me</a></li>
     <li><a onclick="showPage('home');goTo('#contact-sec')">Contact</a></li>
   </ul>
 </nav>
@@ -549,7 +549,15 @@ function openDetail(key){
     if(sec.versions) html+=`<div class="version-list">${sec.versions.map(v=>`<div class="v-row ${v.done?'done':''}"><span class="v-label">${v.label}</span><div class="v-desc">${v.desc}<small>${v.note}</small></div></div>`).join('')}</div>`;
     html+=`</div>`;
   });
-  html+=`</div><div class="other-projects"><div class="section-eyebrow">Other Projects</div><div class="other-grid">${p.otherKeys.map(k=>{const o=projects[k];const em={chess:'♟️',rocket:'🚀',rgm:'⚙️',mechanism:'🔩',electronic:'⚡',research:'🔬'};return`<div class="other-card" onclick="openDetail('${k}')"><div class="other-thumb">${em[k]}</div><div class="other-info"><div class="proj-cat">${o.cat}</div><h4>${o.title}</h4></div></div>`;}).join('')}</div></div>`;
+  const thumbs={
+    chess:`<img src="CSFULLVIEW.PNG" alt="Chess" style="width:100%;height:100%;object-fit:contain;background:#f0eeeb"/>`,
+    rocket:`<span style="font-size:2.5rem">🚀</span>`,
+    rgm:`<img src="RGM2.jpg" alt="RGM" style="width:100%;height:100%;object-fit:cover"/>`,
+    mechanism:`<img src="MechPro.heic" alt="Mechanism" style="width:100%;height:100%;object-fit:cover"/>`,
+    electronic:`<span style="font-size:2.5rem">⚡</span>`,
+    research:`<span style="font-size:2.5rem">🔬</span>`
+  };
+  html+=`</div><div class="other-projects"><div class="section-eyebrow">Other Projects</div><div class="other-grid">${p.otherKeys.map(k=>{const o=projects[k];return`<div class="other-card" onclick="openDetail('${k}')"><div class="other-thumb">${thumbs[k]}</div><div class="other-info"><div class="proj-cat">${o.cat}</div><h4>${o.title}</h4></div></div>`;}).join('')}</div></div>`;
   document.getElementById('detail-inner').innerHTML=html;
   showPage('detail');
 }
