@@ -304,7 +304,7 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
         </div>
       </div>
       <div class="proj-item" onclick="openDetail('rocket')">
-        <div class="proj-thumb">🚀</div>
+        <div class="proj-thumb"><img src="RACKETPIC.PNG" alt="SkyRocket"/></div>
         <div class="proj-info">
           <div class="proj-cat">Cornerstone Eng. 2 · Team</div>
           <h3>SkyRocket Rocket Launcher Game</h3>
@@ -515,7 +515,7 @@ const projects={
       },
       {
         heading:'Electronics and Code: NeoPixel Animations',
-        body:'The Raspberry Pi Pico runs three distinct LED animations triggered by the number of button presses:\n\n1 press: Aurora Borealis, three overlapping sine waves (green/teal/purple) drift across the strip with an ease-out speed effect.\n\n2 presses: Comet and Explosion, an orange comet streaks across all 109 LEDs with a trailing fade, then explodes in an expanding ring with a white-hot flash.\n\n3 presses: Warp/Hyperspace, stars spread across the strip and accelerate to a hyperjump with dense streaks, blinding white flash, and blue fade-out.',
+        body:'',
         codeBlock:`import machine, neopixel, time, math
 
 n = 108
@@ -597,7 +597,7 @@ def comet():
 
 const thumbs={
   chess:`<img src="CSFULLVIEW.PNG" alt="Chess" style="width:100%;height:100%;object-fit:cover;object-position:25% center;display:block"/>`,
-  rocket:`<span style="font-size:2.5rem">🚀</span>`,
+  rocket:`<img src="RACKETPIC.PNG" alt="SkyRocket" style="width:100%;height:100%;object-fit:cover;display:block"/>`,
   rgm:`<img src="RGM2.jpg" alt="RGM" style="width:100%;height:100%;object-fit:cover;display:block"/>`,
   mechanism:`<img src="MechPro.heic" alt="Mechanism" style="width:100%;height:100%;object-fit:cover;display:block"/>`,
   research:`<span style="font-size:2.5rem">🔬</span>`
@@ -610,7 +610,6 @@ function openDetail(key){
     html+=`<div class="detail-section"><h3>${sec.heading}</h3>`;
     if(sec.emoji) html+=`<div class="detail-img-grid single"><div class="detail-img">${sec.emoji}</div></div>`;
     if(sec.body){
-      // support newlines as paragraph breaks
       const paras = sec.body.split('\n\n');
       paras.forEach(para=>{ if(para.trim()) html+=`<p>${para.trim()}</p>`; });
     }
