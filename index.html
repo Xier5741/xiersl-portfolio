@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Xier Lin — Engineering Portfolio</title>
+<title>Xier Lin Engineering Portfolio</title>
 <style>
 :root{
   --bg:#f9f8f6;--white:#fff;--text:#1a1a1a;--muted:#6b7280;
@@ -58,7 +58,6 @@ h1.hero-name em{font-style:italic;color:var(--accent)}
 .proj-item{background:var(--white);overflow:hidden;cursor:pointer;position:relative;opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}
 .proj-item.visible{opacity:1;transform:none}
 .proj-thumb{width:100%;aspect-ratio:4/3;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:3rem;transition:transform .5s;overflow:hidden}
-/* All thumbnail images fill the box by default */
 .proj-thumb img,.other-thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .proj-item:hover .proj-thumb{transform:scale(1.04)}
 .proj-info{padding:20px 22px 24px}
@@ -142,6 +141,19 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
 .v-label{font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--accent);min-width:70px;padding-top:2px}
 .v-desc{font-size:.9rem;color:var(--text);line-height:1.6}
 .v-desc small{display:block;font-size:.8rem;color:var(--muted);margin-top:3px}
+.proto-phase{border-left:3px solid var(--border);margin-left:16px;margin-bottom:0}
+.proto-phase-row{display:flex;align-items:flex-start;gap:20px;padding:18px 20px;position:relative;border-bottom:1px solid var(--border)}
+.proto-phase-row:last-child{border-bottom:none}
+.proto-phase-row::before{content:'';position:absolute;left:-7px;top:24px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--border)}
+.proto-phase-row.done{border-left-color:var(--accent)}
+.proto-phase-row.done::before{border-color:var(--accent);background:var(--accent)}
+.proto-phase-label{font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--accent);min-width:80px;padding-top:3px}
+.proto-phase-body{font-size:.9rem;color:var(--text);line-height:1.6}
+.proto-phase-body small{display:block;font-size:.8rem;color:var(--muted);margin-top:4px}
+.code-block{background:#1e1e1e;color:#d4d4d4;font-family:'Courier New',monospace;font-size:.75rem;line-height:1.7;padding:24px;border-radius:4px;overflow-x:auto;margin:20px 0;white-space:pre}
+.materials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+.mat-card{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:16px;text-align:center;font-size:.85rem;color:var(--muted)}
+.mat-card span{display:block;font-size:1.4rem;margin-bottom:6px}
 .other-projects{border-top:1px solid var(--border);padding:60px 60px 80px;background:var(--white)}
 .other-projects .section-eyebrow{margin-bottom:32px}
 .other-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
@@ -162,6 +174,7 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
   .detail-back{padding:14px 24px}
   footer{flex-direction:column;gap:8px;text-align:center}
   .contact-inner{grid-template-columns:1fr;gap:48px}
+  .materials-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:560px){
   .proj-grid,.other-grid,.detail-img-grid{grid-template-columns:1fr}
@@ -169,6 +182,7 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
   .sw-col{border-right:none;border-bottom:1px solid var(--border)}
   h1.hero-name{font-size:2.8rem}
   .form-row{grid-template-columns:1fr}
+  .materials-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -189,7 +203,7 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
   <section id="hero-sec">
     <div class="hero-eyebrow">Engineering Portfolio</div>
     <h1 class="hero-name">Xier<br><em>Lin.</em></h1>
-    <p class="hero-desc">Mechanical Engineering student with an Industrial Engineering minor at Northeastern University. I like to build things that work — and apply them to problems that matter.</p>
+    <p class="hero-desc">Electrical Engineering student with an Industrial Engineering minor at Northeastern University. I like to build things that work and apply them to problems that matter.</p>
     <div class="hero-ctas">
       <a class="btn btn-dark" onclick="showPage('home');setTimeout(()=>document.getElementById('proj-sec').scrollIntoView({behavior:'smooth'}),50)">View Projects</a>
       <a class="btn btn-outline" onclick="showPage('home');setTimeout(()=>document.getElementById('contact-sec').scrollIntoView({behavior:'smooth'}),50)">Get In Touch</a>
@@ -201,7 +215,7 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
       <h3>Strengths</h3>
       <ul>
         <li>Loves building things that actually work</li>
-        <li>Comfortable failing — and iterating fast</li>
+        <li>Comfortable failing and iterating fast</li>
         <li>Rubik's cube in under 15 seconds</li>
       </ul>
     </div>
@@ -220,12 +234,12 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
     <div class="exp-list">
       <div class="exp-item">
         <div>
-          <div class="exp-date">2024 – Present</div>
+          <div class="exp-date">2024 to Present</div>
           <div class="exp-loc">Boston, MA</div>
         </div>
         <div class="exp-body">
           <div class="company">Northeastern University</div>
-          <h4>B.S. Mechanical Engineering, Minor in Industrial Engineering</h4>
+          <h4>B.S. Electrical Engineering, Minor in Industrial Engineering</h4>
           <p>John Martinson Honors Program · Club Archery · Expected May 2029</p>
         </div>
       </div>
@@ -237,14 +251,14 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
     <div class="exp-list">
       <div class="exp-item">
         <div>
-          <div class="exp-date">Mar 2026 – Present</div>
+          <div class="exp-date">Mar 2026 to Present</div>
           <div class="exp-loc">Boston, MA</div>
         </div>
         <div class="exp-body">
           <div class="company">Northeastern University</div>
           <h4>Undergraduate Research Assistant</h4>
           <ul>
-            <li>Conduct interdisciplinary research on AI & emerging tech in business — social media marketing, digital platforms, customer analytics, and advertising effectiveness.</li>
+            <li>Conduct interdisciplinary research on AI and emerging tech in business, including social media marketing, digital platforms, customer analytics, and advertising effectiveness.</li>
             <li>Contribute to projects in NLP, political science, and sustainability.</li>
           </ul>
         </div>
@@ -257,22 +271,22 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
     <div class="exp-list">
       <div class="exp-item">
         <div>
-          <div class="exp-date">Jun – Aug 2024</div>
+          <div class="exp-date">Jun to Aug 2024</div>
           <div class="exp-loc">Philadelphia, PA</div>
         </div>
         <div class="exp-body">
           <div class="company">Temple University · Heights Philadelphia STEM Program</div>
-          <h4>Research Intern — Mechanobiology Lab</h4>
+          <h4>Research Intern, Mechanobiology Lab</h4>
         </div>
       </div>
       <div class="exp-item">
         <div>
-          <div class="exp-date">Jul – Aug 2023</div>
+          <div class="exp-date">Jul to Aug 2023</div>
           <div class="exp-loc">Philadelphia, PA</div>
         </div>
         <div class="exp-body">
-          <div class="company">Wistar Institute — High School Biomedical Research Program</div>
-          <h4>Research Intern — Vaccine Biology</h4>
+          <div class="company">Wistar Institute, High School Biomedical Research Program</div>
+          <h4>Research Intern, Vaccine Biology</h4>
         </div>
       </div>
     </div>
@@ -286,15 +300,15 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
         <div class="proj-info">
           <div class="proj-cat">CAD · SolidWorks</div>
           <h3>Chess Set Design</h3>
-          <p>Plants vs. Zombies–themed chess set modeled in SolidWorks with full technical drawings.</p>
+          <p>Plants vs. Zombies themed chess set modeled in SolidWorks with full technical drawings.</p>
         </div>
       </div>
       <div class="proj-item" onclick="openDetail('rocket')">
         <div class="proj-thumb">🚀</div>
         <div class="proj-info">
           <div class="proj-cat">Cornerstone Eng. 2 · Team</div>
-          <h3>Rocket Launcher Game</h3>
-          <p>Air-pressure launcher with sensor-based scoring — designed as a STEM education tool.</p>
+          <h3>SkyRocket Rocket Launcher Game</h3>
+          <p>Space-themed foam rocket game with NeoPixel LED animations, built for the Boston Children's Museum Fun Labs showcase.</p>
         </div>
       </div>
       <div class="proj-item" onclick="openDetail('rgm')">
@@ -310,17 +324,10 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
         <div class="proj-info">
           <div class="proj-cat">SkillBuilder · Mechanism</div>
           <h3>Mechanism Project</h3>
-          <p>Iterated through 4 versions of a mechanical system — from first prototype to competition-ready build.</p>
+          <p>Iterated through 4 versions of a mechanical system, from first prototype to competition-ready build.</p>
         </div>
       </div>
-      <div class="proj-item" onclick="openDetail('electronic')">
-        <div class="proj-thumb">⚡</div>
-        <div class="proj-info">
-          <div class="proj-cat">SkillBuilder · Electronics</div>
-          <h3>Electronics Project</h3>
-          <p>Hands-on circuits, components, and troubleshooting — building the electrical foundation every engineer needs.</p>
-        </div>
-      </div>
+
     </div>
   </section>
 
@@ -331,7 +338,7 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
       </div>
       <div class="about-stat"><span class="stat-label">University</span><span class="stat-val">Northeastern</span></div>
       <div class="about-stat"><span class="stat-label">Year</span><span class="stat-val">1st</span></div>
-      <div class="about-stat"><span class="stat-label">Major</span><span class="stat-val">Mechanical Engineering</span></div>
+      <div class="about-stat"><span class="stat-label">Major</span><span class="stat-val">Electrical Engineering</span></div>
       <div class="about-stat"><span class="stat-label">Minor</span><span class="stat-val">Industrial Engineering</span></div>
       <div class="about-stat"><span class="stat-label">Hometown</span><span class="stat-val">Philadelphia, PA</span></div>
     </div>
@@ -339,12 +346,12 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
       <div class="section-eyebrow">About Me</div>
       <h2>Hey, I'm<br><em>Xier.</em></h2>
       <p>Born in LA, raised in Philadelphia, now studying in Boston. Moving around a lot taught me to adapt quickly, stay curious, and find community wherever I land.</p>
-      <p>I'm a 1st-year in Northeastern's John Martinson Honors Program studying Mechanical Engineering with an Industrial Engineering minor. My goal is to build functional, useful things and apply them to real community problems.</p>
-      <p>Outside the lab you'll find me running marathons, solving Rubik's cubes in under 15 seconds, cooking something questionable, or competing in archery — I took 1st place at the Northeastern Invitational.</p>
+      <p>I'm a 1st-year in Northeastern's John Martinson Honors Program studying Electrical Engineering with an Industrial Engineering minor. My goal is to build functional, useful things and apply them to real community problems.</p>
+      <p>Outside the lab you'll find me running marathons, solving Rubik's cubes in under 15 seconds, cooking something questionable, or competing in archery. I took 1st place at the Northeastern Invitational.</p>
       <div class="interests">
-        <span class="tag">🏹 Archery — 1st Place NEU Invitational</span>
+        <span class="tag">🏹 Archery, 1st Place NEU Invitational</span>
         <span class="tag">🏃 Marathon Runner</span>
-        <span class="tag">🎲 Rubik's Cube — Sub 15s</span>
+        <span class="tag">🎲 Rubik's Cube, Sub 15s</span>
         <span class="tag">🍳 Cooking</span>
         <span class="tag">🐾 Animal Volunteer</span>
       </div>
@@ -356,7 +363,7 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
       <div class="contact-form-col">
         <div class="section-eyebrow">Contact</div>
         <h2>Let's<br><em>Talk.</em></h2>
-        <p>Whether you're a recruiter, fellow engineer, or just curious — I'd love to hear from you.</p>
+        <p>Whether you're a recruiter, fellow engineer, or just curious, I'd love to hear from you.</p>
         <form class="contact-form" onsubmit="handleForm(event)">
           <div class="form-row">
             <div class="form-group">
@@ -410,7 +417,7 @@ footer span{font-size:.78rem;color:rgba(255,255,255,.3);letter-spacing:.5px}
   </section>
 
   <footer>
-    <span>Xier Lin — Engineering Portfolio</span>
+    <span>Xier Lin Engineering Portfolio</span>
     <span>Northeastern University · Boston, MA</span>
   </footer>
 
@@ -448,42 +455,110 @@ const projects={
   chess:{
     cat:'CAD · SolidWorks',
     title:'Chess Set Design',
-    sub:'Plants vs. Zombies–Themed SolidWorks Modeling — Individual Project',
+    sub:'Plants vs. Zombies Themed SolidWorks Modeling, Individual Project',
     skills:['SolidWorks','3D Modeling','Technical Drawing','Extrude','Revolve','Loft','Fillet'],
     sections:[
-      {heading:'Overview',body:'Designed and modeled six unique chess pieces in SolidWorks using a cohesive Plants vs. Zombies–inspired theme as part of Cornerstone Engineering 2 (Jan 2026–Present).',imgSrc:'CSFULLVIEW.PNG',imgCaption:'Full chess set assembly — SolidWorks render',imgFit:'contain',imgPos:'center center'},
+      {heading:'Overview',body:'Designed and modeled six unique chess pieces in SolidWorks using a cohesive Plants vs. Zombies inspired theme as part of Cornerstone Engineering 2 (Jan 2026 to Present).',imgSrc:'CSFULLVIEW.PNG',imgCaption:'Full chess set assembly, SolidWorks render',imgFit:'contain',imgPos:'center center'},
       {heading:'The Pieces',body:'Each piece maps to a PvZ character: Jalapeno (King, 4.5"), Cherry Bomb (Queen, 4"), Sunflower (Bishop, 3.5"), Peashooter (Knight, 3"), Wall-nut (Rook, 2.5"), Puff-shroom (Pawn, 2").'},
       {heading:'CAD Process',body:'Tools used across all six pieces:',bullets:['Revolve Boss/Base for primary symmetrical bodies','Loft for organic transitions and crown shapes','Circular Pattern for petals and repeating features','Fillet and Chamfer for surface softening','Shell and Wrap for hollowing and surface detail','Mirror Entities for bilateral symmetry']},
       {heading:'Technical Drawings',body:'Formal multi-view technical drawings with dimensions, heights, and volume measurements for each piece, plus a full chess board assembly drawing.',pdfs:[
-        {src:'RealDrawingPart1PDF.pdf',label:'Technical Drawing — Part 1'},
-        {src:'RealDrawingPart2PDF.pdf',label:'Technical Drawing — Part 2'}
+        {src:'RealDrawingPart1PDF.pdf',label:'Technical Drawing Part 1'},
+        {src:'RealDrawingPart2PDF.pdf',label:'Technical Drawing Part 2'}
       ]}
     ],
     otherKeys:['rocket','rgm','mechanism']
   },
   rocket:{
     cat:'Cornerstone Engineering 2 · Team Project',
-    title:'Rocket Launcher Game',
-    sub:'Air-Pressure Ball Launcher with Sensor-Based Scoring — Team Member & Project Manager',
-    skills:['Mechanical Design','Sensor Integration','Project Management','STEM Education Design','Prototyping'],
+    title:'SkyRocket Rocket Launcher Game',
+    sub:'Space-Themed Interactive Game for Boston Children\'s Museum Fun Labs, Apr 2026 · Northeastern University Class of 2029',
+    skills:['Mechanical Design','Electronics','Raspberry Pi Pico','NeoPixel LEDs','MicroPython','Prototyping','STEM Education Design','Iterative Design'],
     sections:[
-      {heading:'Overview',body:'An ongoing Cornerstone Engineering 2 project designing an educational game for young learners. A user-released weight compresses air in a bottle to launch a ball "rocket" toward planet-themed targets.',emoji:'🚀'},
-      {heading:'Mechanism Design',body:'Core mechanism converts gravitational potential energy into pneumatic pressure.',bullets:['Weight-driven air compression via sealed bottle','Adjustable launch angle for difficulty scaling','Planet-themed target system']},
-      {heading:'Sensor Integration & Educational Goals',body:'Proposed motion sensors at each target to trigger dynamic outputs.',bullets:['Motion sensors for automatic scoring','Dynamic feedback — lights, sounds, scoreboard','Designed to foster persistence and creative thinking in young learners']}
+      {
+        heading:'Overview',
+        body:'SkyRocket is a space-themed foam rocket launcher game designed and built for the Cornerstone of Engineering Fun Labs showcase at the Boston Children\'s Museum in April 2026. Kids use foam rocket launchers to aim at one of three planet-shaped holes on a painted plywood board. When a rocket goes through, pressing a large interactive button triggers a "comet" LED light show, a sequence of animations racing across a strip of 109 NeoPixel LEDs. Our team of four first-year Northeastern engineering students went through a full engineering design process: from a low-fidelity cardboard prototype to a polished painted plywood final build with electronics, all in one semester.',
+        emoji:'🚀'
+      },
+      {
+        heading:'Materials & Components',
+        body:'Key hardware used in the final build:',
+        materialsHTML: true,
+        bullets:[
+          'Foam rockets and launchers, safe for children ages 4 to 8',
+          '109 NeoPixel LED strip for comet light show animations',
+          'Raspberry Pi Pico microcontroller running MicroPython',
+          'Large push button for interactive scoring',
+          'Painted plywood boards, durable and disassembleable',
+          'Rubber bands for structural and mechanical fastening'
+        ]
+      },
+      {
+        heading:'Design Story: Three Prototype Phases',
+        body:'The project went through three major prototype phases, each informed by peer feedback and real-world testing.',
+        phases:[
+          {label:'Low-Fi · Feb 2026',desc:'Plain brown cardboard structure with LED lights and a Pico Board.',note:'Issues found: table too tall for children, holes hard to aim at, rockets hard to control.',done:false},
+          {label:'High-Fi · Mar 2026',desc:'Cardboard decorated with space theme (black with white stars). Motion sensor integrated for scoring. Guide areas added under holes. Table height lowered. Holes resized and angled for better playability.',note:'Key upgrade: motion sensor for automatic scoring.',done:false},
+          {label:'Final · Apr 2026',desc:'Upgraded to painted plywood for durability and aesthetics. Motion sensor replaced with large push button (sensor had too many false positives). Planets painted on board. Comet LED animation added.',note:'Showcased at Boston Children\'s Museum.',done:true}
+        ]
+      },
+      {
+        heading:'What Worked & What Didn\'t',
+        body:'Switching from cardboard to plywood dramatically improved durability and visual appeal. The disassembleable design made transport easy. The interactive button proved far more engaging for children than the motion sensor approach, and the space theme resonated immediately with young visitors.\n\nThe motion sensors available could not reliably detect every rocket pass, producing both missed detections and false alarms. We pivoted to a simpler button-based system, which ultimately made the game more interactive and child-friendly. We also initially considered a safety net to catch rockets, but decided it would reduce the fun, so removing it was the right call.'
+      },
+      {
+        heading:'Lessons Learned',
+        bullets:[
+          'Simpler is often better. Our most reliable and enjoyable solution (a push button) was simpler than our original plan (motion sensors).',
+          'Early testing with real children would have saved significant iteration time.',
+          'Cross-functional planning (splitting electronics, decoration, and assembly across the team clearly) was essential to meeting deadlines.'
+        ]
+      },
+      {
+        heading:'Electronics and Code: NeoPixel Animations',
+        body:'The Raspberry Pi Pico runs three distinct LED animations triggered by the number of button presses:\n\n1 press: Aurora Borealis, three overlapping sine waves (green/teal/purple) drift across the strip with an ease-out speed effect.\n\n2 presses: Comet and Explosion, an orange comet streaks across all 109 LEDs with a trailing fade, then explodes in an expanding ring with a white-hot flash.\n\n3 presses: Warp/Hyperspace, stars spread across the strip and accelerate to a hyperjump with dense streaks, blinding white flash, and blue fade-out.',
+        codeBlock:`import machine, neopixel, time, math
+
+n = 108
+np = neopixel.NeoPixel(machine.Pin(0), n)
+button = machine.Pin(15, machine.Pin.IN, machine.Pin.PULL_UP)
+
+def comet():
+    COMET_COLOR = (200, 30, 1)
+    TAIL_LENGTH = 12
+    for pos in range(n):
+        for i in range(n): np[i] = (0,0,0)
+        np[pos] = COMET_COLOR
+        for t in range(1, TAIL_LENGTH + 1):
+            idx = pos - t
+            if idx < 0: break
+            fade = 1 - (t / TAIL_LENGTH)
+            np[idx] = (int(COMET_COLOR[0]*fade),
+                       int(COMET_COLOR[1]*fade),
+                       int(COMET_COLOR[2]*fade))
+        np.write()
+        time.sleep_ms(12)
+
+# main loop: 1 press=aurora, 2=comet, 3=warp`
+      },
+      {
+        heading:'Full Team Project Site',
+        body:'View the complete SkyRocket project documentation including all team members\' contributions, technical drawings, and full pseudocode flowchart.',
+        link:{href:'https://sites.google.com/view/skyrocketproject/home',label:'View Full SkyRocket Project Site ↗'}
+      }
     ],
     otherKeys:['chess','rgm','mechanism']
   },
   rgm:{
     cat:'Cornerstone Engineering 1 · Team Project',
     title:'Rube Goldberg Machine',
-    sub:'Chain-Reaction Device — Sep–Dec 2025 · Group E',
+    sub:'Chain-Reaction Device, Sep to Dec 2025 · Group E',
     skills:['Mechanism Design','Cardboard Fabrication','Iterative Prototyping','Chain-Reaction Systems','Team Collaboration'],
     sections:[
       {heading:'What is a Rube Goldberg Machine?',body:'An intentionally over-engineered device that performs a simple task through a long, elaborate chain of events. Each stage triggers the next.',imgSrc:'WhatIsRGM.jpeg',imgCaption:'What is a Rube Goldberg Machine?'},
-      {heading:'Our Design',body:"Group E built a multi-stage chain-reaction machine. My contribution was a custom pulley and weighted-drop module that integrated with the prior team's mechanism to initiate a continuous kinetic sequence.",imgSrc:'RGMbeforeafter.png',imgCaption:'Before & after — design to build'},
+      {heading:'Our Design',body:"Group E built a multi-stage chain-reaction machine. My contribution was a custom pulley and weighted-drop module that integrated with the prior team's mechanism to initiate a continuous kinetic sequence.",imgSrc:'RGMbeforeafter.png',imgCaption:'Before and after, design to build'},
       {heading:'Build Process',body:'Constructed from cardboard and repurposed materials through multiple iterations.',imgs:[{src:'RGM1.jpg',caption:'Early prototype build'},{src:'RGM2.jpg',caption:'Final assembly'}]},
-      {heading:'Prototype Model & Code Flow',imgs:[{src:'RGMmodel.png',caption:'Prototype model'},{src:'RGMflowchart.png',caption:'Code flow chart'}]},
-      {heading:'Video Runs',body:'Our machine in action — from first version to most successful run.',videos:[{src:'RGMVersion1.mp4',caption:'Version 1 run'},{src:'VersionFinal.mp4',caption:'Final version run'},{src:'RGMMostSuccessful.mp4',caption:'Most successful run 🎉'}]},
+      {heading:'Prototype Model and Code Flow',imgs:[{src:'RGMmodel.png',caption:'Prototype model'},{src:'RGMflowchart.png',caption:'Code flow chart'}]},
+      {heading:'Video Runs',body:'Our machine in action, from first version to most successful run.',videos:[{src:'RGMVersion1.mp4',caption:'Version 1 run'},{src:'VersionFinal.mp4',caption:'Final version run'},{src:'RGMMostSuccessful.mp4',caption:'Most successful run 🎉'}]},
       {heading:'Full Group Project Site',body:"View the full Group E documentation including all team members' contributions.",link:{href:'https://sites.google.com/view/group-e-rgm-/home',label:'View Full Group E Project Site ↗'}}
     ],
     otherKeys:['chess','rocket','mechanism']
@@ -491,54 +566,40 @@ const projects={
   mechanism:{
     cat:'SkillBuilder · Mechanism',
     title:'Mechanism Project',
-    sub:'Iterative Mechanical System Design — SkillBuilder Program',
+    sub:'Iterative Mechanical System Design, SkillBuilder Program',
     skills:['Mechanical Design','Iterative Prototyping','Fabrication','Competition Build'],
     sections:[
       {heading:'Overview',body:'Designing a mechanical system and pushing it through version after version until it worked. Each failure was a lesson, not a setback.',emoji:'🔩'},
       {heading:'Design Progression',body:'Four major versions, each building on the last:',versions:[
         {label:'V0',desc:'Initial prototype',note:'First proof of concept',done:false},
-        {label:'V1',desc:'First redesign',note:'Failed — revealed critical constraints',done:false},
-        {label:'V2',desc:'Second redesign',note:'Failed — exposed structural limitations',done:false},
+        {label:'V1',desc:'First redesign',note:'Failed, revealed critical constraints',done:false},
+        {label:'V2',desc:'Second redesign',note:'Failed, exposed structural limitations',done:false},
         {label:'V3 Draft',desc:'Incomplete build',note:'Right approach identified',done:false},
-        {label:'V3 Final',desc:'Competition-ready',note:'Fully functional — submitted for competition',done:true}
+        {label:'V3 Final',desc:'Competition-ready',note:'Fully functional, submitted for competition',done:true}
       ]},
       {heading:'Key Takeaway',body:"Failure is data. Each version that didn't work told me exactly what to fix."}
     ],
-    otherKeys:['electronic','chess','rgm']
-  },
-  electronic:{
-    cat:'SkillBuilder · Electronics',
-    title:'Electronics Project',
-    sub:'Circuits, Components & Troubleshooting — SkillBuilder Program',
-    skills:['Circuit Design','Soldering','Electronic Components','Troubleshooting','LED Systems'],
-    sections:[
-      {heading:'Overview',body:'Hands-on exploration of electronic systems — building circuits from scratch and developing troubleshooting instincts.',emoji:'⚡'},
-      {heading:'What I Built',bullets:['Designed and wired basic circuits from schematics','Practiced soldering on real PCB-style layouts','Built and tested an LED-based circuit system','Debugged live circuits using systematic fault isolation']},
-      {heading:'Why It Matters',body:'Getting comfortable with the fundamentals — current, resistance, voltage — makes every subsequent project easier.'}
-    ],
-    otherKeys:['mechanism','chess','research']
+    otherKeys:['chess','rgm']
   },
   research:{
     cat:'Bioengineering Research',
     title:'Mechanobiology Research',
-    sub:'Fibronectin in Wounded Skin Tissue — Temple University, Summer 2024',
+    sub:'Fibronectin in Wounded Skin Tissue, Temple University, Summer 2024',
     skills:['Confocal Microscopy','Immunofluorescence Imaging','PDMS Substrate Fabrication','Quantitative Image Analysis','Research Communication'],
     sections:[
-      {heading:'Overview',body:"Investigated fibronectin mechanobiology in wounded skin tissue in Dr. Wang's Mechanobiology Lab at Temple University — specifically how fiber alignment influences directional cell migration and cancer metastasis.",emoji:'🔬'},
+      {heading:'Overview',body:"Investigated fibronectin mechanobiology in wounded skin tissue in Dr. Wang's Mechanobiology Lab at Temple University, specifically how fiber alignment influences directional cell migration and cancer metastasis.",emoji:'🔬'},
       {heading:'Methods',bullets:['Immunofluorescence imaging and confocal microscopy on tissue samples','Transformed fluorescence images into quantitative data: nuclei counts, fibronectin area, fiber coherency','High-throughput casting of thin anisotropic PDMS substrates','Comparative analysis of control vs. tumor-conditioned matrices']},
       {heading:'Findings & Impact',body:'Identified significant differences in fiber alignment between control and tumor-conditioned matrices linked to directional cell migration pathways implicated in metastasis. Presented findings at a formal research symposium.'}
     ],
-    otherKeys:['chess','rocket','electronic']
+    otherKeys:['chess','rocket']
   }
 };
 
-// Inline styles here override everything — this is the definitive fix
 const thumbs={
   chess:`<img src="CSFULLVIEW.PNG" alt="Chess" style="width:100%;height:100%;object-fit:cover;object-position:25% center;display:block"/>`,
   rocket:`<span style="font-size:2.5rem">🚀</span>`,
   rgm:`<img src="RGM2.jpg" alt="RGM" style="width:100%;height:100%;object-fit:cover;display:block"/>`,
   mechanism:`<img src="MechPro.heic" alt="Mechanism" style="width:100%;height:100%;object-fit:cover;display:block"/>`,
-  electronic:`<span style="font-size:2.5rem">⚡</span>`,
   research:`<span style="font-size:2.5rem">🔬</span>`
 };
 
@@ -548,15 +609,21 @@ function openDetail(key){
   p.sections.forEach(sec=>{
     html+=`<div class="detail-section"><h3>${sec.heading}</h3>`;
     if(sec.emoji) html+=`<div class="detail-img-grid single"><div class="detail-img">${sec.emoji}</div></div>`;
-    if(sec.body) html+=`<p>${sec.body}</p>`;
+    if(sec.body){
+      // support newlines as paragraph breaks
+      const paras = sec.body.split('\n\n');
+      paras.forEach(para=>{ if(para.trim()) html+=`<p>${para.trim()}</p>`; });
+    }
     if(sec.imgSrc) html+=`<div class="detail-img-grid single"><div class="detail-img" style="background:#f0eeeb;aspect-ratio:16/9"><img src="${sec.imgSrc}" alt="${sec.imgCaption||''}" style="width:100%;height:100%;object-fit:${sec.imgFit||'cover'};object-position:${sec.imgPos||'center'}"/></div></div>${sec.imgCaption?`<p class="img-caption">${sec.imgCaption}</p>`:''}`;
     if(sec.imgs) html+=`<div class="detail-img-grid">${sec.imgs.map(i=>`<div><div class="detail-img"><img src="${i.src}" alt="${i.caption||''}" style="width:100%;height:100%;object-fit:cover;display:block"/></div>${i.caption?`<p class="img-caption">${i.caption}</p>`:''}</div>`).join('')}</div>`;
     if(sec.videos) html+=`<div class="video-grid">${sec.videos.map(v=>`<div class="video-wrap"><video controls src="${v.src}"></video>${v.caption?`<p class="img-caption">${v.caption}</p>`:''}</div>`).join('')}</div>`;
     if(sec.link) html+=`<a href="${sec.link.href}" target="_blank" class="proj-ext-link">${sec.link.label}</a>`;
     if(sec.links) html+=sec.links.map(l=>`<a href="${l.href}" target="_blank" class="proj-ext-link" style="margin-right:10px;margin-bottom:8px">${l.label}</a>`).join('');
-    if(sec.pdfs) html+=sec.pdfs.map(p=>`<div class="pdf-embed-wrap"><div class="pdf-embed-label">${p.label}</div><embed src="${p.src}" type="application/pdf" class="pdf-embed"/></div>`).join('');
+    if(sec.pdfs) html+=sec.pdfs.map(pf=>`<div class="pdf-embed-wrap"><div class="pdf-embed-label">${pf.label}</div><embed src="${pf.src}" type="application/pdf" class="pdf-embed"/></div>`).join('');
     if(sec.bullets) html+=`<ul>${sec.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>`;
     if(sec.versions) html+=`<div class="version-list">${sec.versions.map(v=>`<div class="v-row ${v.done?'done':''}"><span class="v-label">${v.label}</span><div class="v-desc">${v.desc}<small>${v.note}</small></div></div>`).join('')}</div>`;
+    if(sec.phases) html+=`<div class="proto-phase">${sec.phases.map(ph=>`<div class="proto-phase-row ${ph.done?'done':''}"><span class="proto-phase-label">${ph.label}</span><div class="proto-phase-body">${ph.desc}<small>${ph.note}</small></div></div>`).join('')}</div>`;
+    if(sec.codeBlock) html+=`<div class="code-block">${sec.codeBlock.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>`;
     html+=`</div>`;
   });
   html+=`</div><div class="other-projects"><div class="section-eyebrow">Other Projects</div><div class="other-grid">${p.otherKeys.map(k=>{const o=projects[k];return`<div class="other-card" onclick="openDetail('${k}')"><div class="other-thumb">${thumbs[k]}</div><div class="other-info"><div class="proj-cat">${o.cat}</div><h4>${o.title}</h4></div></div>`;}).join('')}</div></div>`;
