@@ -613,10 +613,10 @@ def comet():
     sub:'Chain-Reaction Device, Sep to Dec 2025 · Group E',
     skills:['Mechanism Design','Cardboard Fabrication','Iterative Prototyping','Chain-Reaction Systems','Team Collaboration'],
     sections:[
-      {heading:'What is a Rube Goldberg Machine?',body:'An intentionally over-engineered device that performs a simple task through a long, elaborate chain of events. Each stage triggers the next.',imgSrc:'WhatisaRubeGoldbergMachine.jpg',imgCaption:'What is a Rube Goldberg Machine?'},
+      {heading:'What is a Rube Goldberg Machine?',body:'An intentionally over-engineered device that performs a simple task through a long, elaborate chain of events. Each stage triggers the next.',imgSrc:'WhatisaRubeGoldbergMachine.jpeg',imgCaption:'What is a Rube Goldberg Machine?'},
       {heading:'Our Design',body:"Group E built a multi-stage chain-reaction machine. My contribution was a custom pulley and weighted-drop module that integrated with the prior team's mechanism to initiate a continuous kinetic sequence.",imgSrc:'RGMbeforeafterPic.png',imgCaption:'Before and after, design to build'},
       {heading:'Build Process',body:'Constructed from cardboard and repurposed materials through multiple iterations.',imgs:[{src:'RGM1.jpg',caption:'Early prototype build'},{src:'RGM2.jpg',caption:'Final assembly'}]},
-      {heading:'Prototype Model and Code Flow',imgs:[{src:'modleofprototye.png',caption:'Prototype model'},{src:'cRGModeflowchart.png',caption:'Code flow chart'}]},
+      {heading:'Prototype Model and Code Flow',imgsFit:'contain',imgs:[{src:'modleofprototye.png',caption:'Prototype model'},{src:'cRGModeflowchart.png',caption:'Code flow chart'}]},
       {heading:'Video Runs',body:'Our machine in action, from first version to most successful run.',videos:[{src:'RGMVersion1.mp4',caption:'Version 1 run'},{src:'VersionFinal.mp4',caption:'Final version run'},{src:'RGMMostSuccessfulRun.mp4',caption:'Most successful run 🎉'}]},
       {heading:'Full Group Project Site',body:"View the full Group E documentation including all team members' contributions.",link:{href:'https://sites.google.com/view/group-e-rgm-/home',label:'View Full Group E Project Site ↗'}}
     ],
@@ -673,7 +673,11 @@ function openDetail(key){
       paras.forEach(para=>{ if(para.trim()) html+=`<p>${para.trim()}</p>`; });
     }
     if(sec.imgSrc) html+=`<div class="detail-img-grid single"><div class="detail-img" style="background:#f0eeeb;aspect-ratio:16/9"><img src="${sec.imgSrc}" alt="${sec.imgCaption||''}" style="width:100%;height:100%;object-fit:${sec.imgFit||'cover'};object-position:${sec.imgPos||'center'}"/></div></div>${sec.imgCaption?`<p class="img-caption">${sec.imgCaption}</p>`:''}`;
-    if(sec.imgs) html+=`<div class="detail-img-grid">${sec.imgs.map(i=>`<div><div class="detail-img"><img src="${i.src}" alt="${i.caption||''}" style="width:100%;height:100%;object-fit:cover;display:block"/></div>${i.caption?`<p class="img-caption">${i.caption}</p>`:''}</div>`).join('')}</div>`;
+    if(sec.imgs){
+      const fit = sec.imgsFit || 'cover';
+      const boxStyle = fit==='contain' ? 'background:#fff;aspect-ratio:4/3' : '';
+      html+=`<div class="detail-img-grid">${sec.imgs.map(i=>`<div><div class="detail-img" style="${boxStyle}"><img src="${i.src}" alt="${i.caption||''}" style="width:100%;height:100%;object-fit:${fit};display:block"/></div>${i.caption?`<p class="img-caption">${i.caption}</p>`:''}</div>`).join('')}</div>`;
+    }
     if(sec.videos) html+=`<div class="video-grid">${sec.videos.map(v=>`<div class="video-wrap"><video controls src="${v.src}"></video>${v.caption?`<p class="img-caption">${v.caption}</p>`:''}</div>`).join('')}</div>`;
     if(sec.link) html+=`<a href="${sec.link.href}" target="_blank" class="proj-ext-link">${sec.link.label}</a>`;
     if(sec.links) html+=sec.links.map(l=>`<a href="${l.href}" target="_blank" class="proj-ext-link" style="margin-right:10px;margin-bottom:8px">${l.label}</a>`).join('');
